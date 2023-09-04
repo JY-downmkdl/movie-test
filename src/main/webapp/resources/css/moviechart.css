@@ -1,0 +1,100 @@
+@charset "UTF-8";
+.tit-heading-wrap{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #666;
+}
+.tit-heading-wrap h3{
+    font-size: 28px;
+}
+.tit-heading-wrap .submenu ul{
+    display: flex;
+    justify-content: space-between;
+    line-height: 28px;
+}
+.tit-heading-wrap .submenu ul li {
+    padding-left: 10px;
+}
+
+.sect-sorting{
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    line-height: 20px;
+}
+.sect-sorting .nowshow {
+    position: relative;
+    margin-right: 70%;
+}
+
+.sect-movie-chart{
+    margin: 10px;
+}
+/*.sect-movie-chart ol li:first-child{
+    float: left;
+    width: 197px;
+    padding-bottom: 30px;
+}*/
+.sect-movie-chart ol li{
+    float: left;
+    width: 197px;
+    margin-left: 64px;
+    padding-bottom: 30px;
+}
+
+.sect-movie-chart ol li img{
+    width: 100%;
+    height: 260px;
+}
+
+.register-button{
+    background-color: tomato;
+    width: 80px;
+    height: 30px;
+    padding: 10px;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+/*--등급*/
+span.thumb-image {
+    position: relative;
+}
+i.cgvIcon.etc {
+    position: absolute;
+    left: 7px;
+    top: -110px;
+    /* background: yellow; */
+    padding: 4px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 15px;
+}
+
+
+/*--예매율 에그 등*/
+.box-contents .title {
+    display: block;
+    font-weight: bold;
+    font-size: 15px;
+    padding-top: 5px;
+}
+.egg-gage.small {
+    display: inline-block;
+    padding-left: 10px;
+    border-left: 1px solid #ddd;
+}
+span.like {
+    background: tomato;
+    display: block;
+    text-align: center;
+    padding: 7px 0;
+    width: 70px;
+    color: #fff;
+    border-radius: 7px;
+    margin-top: 5px;
+}

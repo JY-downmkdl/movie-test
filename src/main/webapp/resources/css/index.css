@@ -1,0 +1,51 @@
+@charset "UTF-8";
+#container{
+    width: 100%;
+    position: relative;
+    z-index: 7;
+}
+
+#ctl00_PlaceHolderContent_divMovieSelection_wrap{
+    height: 500px;
+    position: relative;
+    background-color:#000;
+}
+ 
+#container .contents{
+    height: 100%;
+}
+
+.video_wrap{
+    background-color: black;
+    color: #fff;
+    position: relative;
+    top: 50%;
+    left: 0;
+}
+
+.video_wrap span:first-child{
+    font-size: 48px;
+    display: block;
+    line-height: 72px;
+}
+.video_wrap span{
+    font-size: 18px;
+}
+.movieSelection_wrap{
+    position: relative;
+    height: 498px;
+    background-color: #000;
+}
+
+.movieChartBeScreen_wrap{
+    background-color: rgba(232, 232, 232, 0.37);
+}
+.movieSelection_video_controller_wrap{
+    position: absolute;
+    top: 74%;
+    display: block;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8) ;
+    color: #333;
+    border-radius: 15px;
+}

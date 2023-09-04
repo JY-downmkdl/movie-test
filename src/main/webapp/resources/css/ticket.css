@@ -1,0 +1,821 @@
+@charset "UTF-8";
+.contentsStart{
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+        /*티켓 스타일*/
+#ticket .steps {
+    position: relative;
+    width: 996px;
+    background-color: #F2F0E4;
+}
+#ticket .steps .step1 {
+    height: 530px;
+    background-color: #d4d3c9;
+}
+
+#ticket .section {
+    position: relative;
+    float: left;
+    height: 100%;
+    margin-left: 2px;
+    background-color: #f2f0e5;
+    overflow: hidden;
+}
+#ticket .section-movie {
+    width: 284px;
+    /* height: 528px; */
+}
+#ticket .section .col-head {
+    position: relative;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    background-color: #333333;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    color: #fff;
+}
+.section-movie .col-body {
+    min-height: 495px;
+}
+.section .col-body {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.movie-select {
+    float: left;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 9px;
+    width: 254px;
+    height: 100%;
+}
+/*.movie-select .sortmenu {*/
+.sortmenu {
+    float: left;
+    /*width: 244px;*/
+    margin-top: 2px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    background: url(/resources/img/ticket/sortmenu_border_bottom.png) repeat-x bottom;
+}
+
+.movie-select .sortmenu .button {
+    float: left;
+    min-width: 50px;
+    height: 32px;
+    line-height: 32px;
+    color: #666;
+    padding: 0 5px;
+}
+.button {
+    display: inline;
+    border: none;
+    padding: 0 0;
+    background: none;
+    white-space: nowrap;
+    vertical-align: baseline;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.sortmenu .button.selected {
+    color: #333;
+    background: url(/resources/img/ticket/sortmenu_btn_on.png) no-repeat 50% 100%;
+    color: #333;
+}
+.sreader {
+    display: block;
+    position: absolute;
+    left: -10000px;
+}
+
+.movie-list {
+    float: left;
+    width: 254px;
+    margin-top: 3px;
+    height: 84%;
+}
+.nano {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.nano .content {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: scroll;
+}
+.nano > .pane, .nano > .pane-y,
+ .nano > .pane-x {
+    background: none;
+}
+.nano > .pane, .nano > .pane-y,
+ .nano > .pane-x {
+    position: absolute;
+    transition: .2s;
+    border-radius: 5px;
+}
+.nano > .pane > .slider,
+ .nano > .pane-y > .slider-y,
+  .nano > .pane-x > .slider-x {
+    background: #444;
+    background: rgba(0,0,0,.5);
+    margin: 0px 2px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    position: absolute;
+}
+.nano .content.scroll-y {
+    overflow-x: hidden;
+}
+.nano > .pane-y {
+    width: 10px;
+    top: 4px;
+    bottom: 4px;
+    right: 0;
+}
+.nano .slider-y {
+    width: 6px;
+    position: absolute;
+    transition: .2s;
+}
+
+
+
+/*영화 목록*/
+.movie-list > ul {
+    width: 280px;
+}
+.movie-list > ul > li {
+    clear: both;
+    float: left;
+    width: 244px;
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 1px;
+    position: relative;
+}
+.movie-list > ul > li.selected {
+    background-color: #333;
+    width: 242px;
+    height: 33px;
+    line-height: 33px;
+    border: 1px solid #000;
+}
+.movie-list > ul > li.selected > a span.text {
+    color: #fff;
+}
+
+.movie-list > ul > li > a {
+    display: block;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
+}
+.movie-list > ul > li > a .cgvIcon.etc {
+    position: relative;
+    top: -1px;
+    margin: 0 6px;
+    vertical-align: middle;
+}
+.movie-list > ul > li > a span.text {
+    color: #333;
+    font-weight: bold;
+    padding-right: 5px;
+}
+
+
+
+/*------극장 선택하기*/
+#ticket .section-theater {
+    width: 265px;
+    /* height: 528px; */
+}
+.section-theater .col-head {
+    background-position: 50% -25px;
+}
+.theater-select {
+    float: left;
+    width: 235px;
+    height: 364px;
+    margin-left: 20px;
+    margin-top: 8px;
+}
+
+
+.theater-list {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 323px;
+    margin-top: 3px;
+}
+.theater-list .theater-area-list {
+    float: left;
+    width: 109px;
+    height: 100%;
+    overflow: hidden;
+}
+.theater-area-list > ul > li {
+    clear: both;
+    overflow: hidden;
+    float: left;
+    width: 100%;
+    height: 31px;
+    line-height: 31px;
+    margin-bottom: 1px;
+}
+.theater-area-list > ul > li > div {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 124px;
+    height: 100%;
+}
+.theater-area-list > ul > li.selected > div {
+    display: block;
+}
+.theater-area-list > ul > li > a {
+    display: block;
+    color: #333333;
+    font-size: 12px;
+    letter-spacing: -0.1em;
+    text-align: right;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
+    padding-left: 6px;
+    padding-right: 8px;
+    background-color: #e6e4d9;
+}
+
+/*지점명 보이기*/
+.theater-select .theater-list .theater-area-list > ul > li.selected > a {
+    background: url('/resources/img/ticket/theaterarealist_item_selected.png') no-repeat right;
+    background-color: transparent;
+}
+.theater-area-list > ul > li.selected > div {
+    display: block;
+}
+
+.area_theater_list ul {
+    width: 154px;
+}
+.area_theater_list ul li {
+    clear: both;
+    overflow: hidden;
+    float: left;
+    width: 114px;
+    height: 31px;
+    line-height: 31px;
+    margin-bottom: 1px;
+}
+.area_theater_list ul li.selected {
+    background-color: #333;
+    width: 112px;
+    height: 29px;
+    line-height: 29px;
+    border: 1px solid #000;
+}
+.area_theater_list ul li a {
+    display: block;
+    color: #333333;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+.area_theater_list ul li.selected a {
+    border: 1px solid #5c5c5c;
+    height: 25px;
+    line-height: 25px;
+    margin: 1px;
+    color: #fff;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/*날짜*/
+.section-date {
+    width: 91px;
+    /* height: 528px; */
+}
+.section.section-date .col-head {
+    background-position: 50% -58px;
+}
+a.skip_to_something {
+    display: block;
+    position: absolute;
+    left: -10000px;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: #333;
+    line-height: 33px;
+    text-decoration: none;
+    color: #fff;
+}
+.section-date .col-body .date-list {
+    float: left;
+    width: 74px;
+    height: 96%;
+    margin-top: 19px;
+    margin-left: 7px;
+}
+.col-body .date-list ul {
+    width: 104px;
+}
+.date-list ul li.month {
+    clear: both;
+    overflow: hidden;
+    float: left;
+    width: 64px;
+    height: 67px;
+    margin-bottom: 1px;
+    margin-left: 7px;
+}
+.date-list ul li.month span.year {
+    display: block;
+    margin-top: 12px;
+    text-align: center;
+    color: #666;
+    font-size: 11px;
+    font-family: Verdana;
+    font-weight: bold;
+    line-height: 11px;
+}
+.date-list ul li.month span.month {
+    display: block;
+    margin-top: 3px;
+    text-align: center;
+    color: #666;
+    font-size: 30px;
+    font-family: Verdana;
+    font-weight: bold;
+    line-height: 30px;
+}
+.date-list ul li.day {
+    margin-left: 10px;
+    width: 60px;
+    position: relative;
+    clear: both;
+    float: left;
+    width: 64px;
+    height: 35px;
+    line-height: 35px;
+    margin-bottom: 1px;
+}
+.date-list ul li.day.selected {
+    background-color: #333;
+    width: 60px;
+    height: 33px;
+    line-height: 33px;
+    border: 1px solid #000;
+}
+
+.date-list ul li.day a {
+    display: block;
+    height: 100%;
+    vertical-align: middle;
+    padding-left: 8px;
+    padding-right: 7px;
+}
+.date-list ul li.day.selected a {
+    border: 1px solid #5c5c5c;
+    height: 29px;
+    line-height: 29px;
+    margin: 1px;
+    padding-left: 6px;
+    padding-right: 5px;
+    color: #fff;
+}
+
+.date-list ul li.day a span.dayweek {
+    float: left;
+    color: #333;
+    font-size: 12px;
+    padding-top: 2px;
+    cursor: pointer;
+}
+.date-list ul li.day.selected a span.dayweek {
+    color: #fff;
+}
+.date-list ul li.day a span.day {
+    float: right;
+    color: #333;
+    font-family: Verdana;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.date-list ul li.day.selected a span.day {
+    color: #fff;
+}
+
+/* 영화 시간*/
+.step1 .section-time {
+    width: 346px;
+    /* height: 528px; */
+}
+.section.section-time .col-head {
+    background-position: 50% -91px;
+}
+.section-time .col-body .time-option {
+    width: 306px;
+    height: 23px;
+    margin-left: 20px;
+    margin-top: 19px;
+    border-bottom: solid 2px #cfcdc3;
+}
+.time-option span.morning {
+    float: left;
+    height: 14px;
+    padding-left: 18px;
+    background:url(/resources/img/ticket/icon_morning_night.png) no-repeat left;
+    background-position: 0 0;
+}
+.step1 .section-time .col-body .time-list .theater ul li.morning a span.count {
+    padding-left: 19px;
+    width: 33px;
+    background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/icon/icon_morning_night.png) no-repeat left;
+    background-position: 2px 6px;
+}
+.time-option span.night {
+    float: left;
+    height: 14px;
+    padding-left: 14px;
+    margin-left: 14px;
+    background: url(/resources/img/ticket/icon_morning_night.png) no-repeat left;
+    background-position: 0 -20px;
+}
+.step1 .section-time .col-body .time-list .theater ul li.night a span.count {
+    padding-left: 19px;
+    width: 33px;
+    background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/icon/icon_morning_night.png) no-repeat left;
+    background-position: 2px -15px;
+}
+
+.section-time .col-body .placeholder {
+    float: left;
+    width: 100%;
+    height: 416px;
+    line-height: 416px;
+    text-align: center;
+    color: #666;
+}
+.section-time .col-body .placeholder.hidden {
+    display: none;
+}
+
+.section-time .col-body .time-list {
+    float: left;
+    width: 316px;
+    height: 88%;
+    margin-left: 20px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+.section-time .col-body .time-list .content {
+    width: 346px;
+}
+
+.section-time .col-body .time-list .theater:first-child {
+    margin-top: 0px;
+}
+.section-time .col-body .time-list .theater {
+    float: left;
+    width: 306px;
+    border-bottom: solid 2px #cfcdc3;
+    margin-top: 16px;
+    overflow: hidden;
+}
+
+.time-list .theater .title span.floor {
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.time-list .theater .title span.seatcount {
+    color: #666;
+    font-size: 12px;
+}
+
+.time-list .theater ul {
+    width: 309px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    overflow: hidden;
+}
+.time-list .theater ul li {
+    position: relative;
+    float: left;
+    height: 25px;
+    line-height: 25px;
+    padding-bottom: 9px;
+}
+.time-list .theater ul li a {
+    display: block;
+    vertical-align: middle;
+    width: 103px;
+    height: 25px;
+}
+.time-list .theater ul li a span.time {
+    width: 49px;
+    height: 23px;
+    line-height: 23px;
+    border: 1px solid #d6d3ce;
+    background-image: none;
+    background-color: #f2f0e5;
+    float: left;
+    color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: Verdana;
+    /*background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step1/timelist_item_none.png) no-repeat;*/
+}
+.time-list .theater ul li.selected a span.time {
+    background-image: none;
+    border-color: #000;
+    background-color: #333;
+}
+.time-list .theater ul li.selected a span.time {
+    background-image: none;
+    border-color: #000;
+    background-color: #333;
+}
+.time-list .theater ul li.selected a span.time {
+    color: #fff;
+    /*background-image: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step1/timelist_item_selected.png);*/
+}
+
+.time-list .theater ul li a span .time span {
+    display: block;
+}
+.time-list .theater ul li.selected a span.time span {
+    
+    margin: 1px;
+    line-height: 19px;
+}
+.time-list .theater ul li a span.count {
+    float: left;
+    width: 49px;
+    height: 20px;
+    line-height: 25px;
+    text-align: left;
+    color: #3d7c35;
+    font-size: 12px;
+    padding-left: 3px;
+    overflow: hidden;
+}
+.date-list ul li.day.dimmed a {
+    opacity: 0.25;
+    filter: alpha(opacity=25);
+}
+
+/*진행상황목록*/
+#ticket_tnb {
+    position: relative;
+    width: 100%;
+    min-width: 996px;
+    height: 128px;
+    background-color: #1d1d1c;
+}
+.tnb {
+    margin: 0 auto;
+    width: 996px;
+    height: 108px;
+    padding: 10px 0;
+    position: relative;
+}
+.tnb.step1 .btn-left {
+    display: none;
+}
+.tnb .info {
+    float: left;
+    height: 108px;
+    padding-right: 2px;
+    background: url(/resources/img/ticket/split.png) no-repeat right;
+    position: relative;
+    color: #cccccc;
+    font-size: 12px;
+}
+.tnb .info.movie {
+    width: 210px;
+}
+.tnb .info.movie .movie_poster {
+    float: left;
+    width: 74px;
+    height: 108px;
+    line-height: 108px;
+    margin-right: 11px;
+    overflow: hidden;
+}
+.info.movie .movie_poster img {
+    width: 100%;
+    vertical-align: middle;
+}
+.tnb .info.movie .row {
+    float: right;
+}
+.info.movie .row.movie_title {
+    margin-top: 14px;
+    display: none;
+}
+.info.movie .row .data {
+    width: 120px;
+    max-height: 40px;
+}
+.tnb .info .row .data a {
+    color: #cccccc;
+}
+.tnb .info .row .data.ellipsis-line1 {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.tnb .info .row .data {
+    float: right;
+    font-weight: bold;
+}
+.tnb .info .row {
+    height: 20px;
+    line-height: 20px;
+}
+   /*영화 선택 하세요*/
+.tnb .info.movie .placeholder {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/resources/img/ticket/tnb_steps.png) no-repeat 50% 40px;
+}
+
+
+.tnb .info.theater {
+    width: 185px;
+}
+.tnb .info .row:first-child {
+    margin-top: 14px;
+}
+.info.theater .row .header {
+    width: 40px;
+    padding-left: 10px;
+}
+.info.theater .row .data {
+    width: 135px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.info.theater .row .header {
+    width: 40px;
+    padding-left: 10px;
+}
+.info.theater .row.date .data {
+    letter-spacing: -1px;
+}
+.info .row .header {
+    float: left;
+    padding-left: 10px;
+}
+.info.theater .placeholder {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/resources/img/ticket/tnb_steps.png) no-repeat 50% -68px;
+}
+
+
+.tnb.step1 .info.seat {
+    display: none;
+}
+.tnb .info.seat {
+    width: 171px;
+}
+.info.seat .row .header {
+    width: 52px;
+    padding-left: 9px;
+}
+.info.seat .row .data {
+    width: 110px;
+}
+.info .row .data {
+    float: right;
+    font-weight: bold;
+}
+.info .row.colspan3 {
+    height: 60px;
+}
+.info.seat .row .header {
+    width: 52px;
+    padding-left: 9px;
+}
+.info.seat .placeholder {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/resources/img/ticket/tnb_steps.png) no-repeat 50% -176px;
+}
+
+
+.step1 .info.payment-ticket, .tnb.step3 .info.payment-ticket {
+    display: none;
+}
+.info.payment-ticket {
+    width: 133px;
+    background: none;
+    padding-right: 0px;
+}
+.info.payment-ticket .row .header {
+    width: 36px;
+    padding-left: 8px;
+}
+.info.payment-ticket .row .data {
+    width: 89px;
+    text-align: right;
+}
+
+
+.info.path {
+    background: none;
+}
+.info .row.colspan4 {
+    height: 80px;
+}
+.info.path .row .path-step2 {
+    width: 111px;
+    height: 100%;
+    display: inline-block;
+    zoom: 1;
+    margin-left: 23px;
+    background: url(/resources/img/ticket/tnb_steps.png) no-repeat 50% -190px;
+}
+.info.path .row .path-step3 {
+    width: 71px;
+    height: 100%;
+    margin-left: 18px;
+    display: inline-block;
+    zoom: 1;
+    background: url(/resources/img/ticket/tnb_steps.png) no-repeat 50% -298px;
+}
+
+.tnb_step_btn_right_before {
+    position: absolute;
+    top: 10px;
+    right: 108px;
+    width: 0;
+    height: 108px;
+}
+
+
+.tooltip_notice {
+    display: none;
+}
+.btn-right {
+    background-position: 0 -220px;
+}
+.btn-right {
+    background: url('/resources/img/ticket/tnb_buttons.png') no-repeat;
+    background-position: 0 0;
+    overflow: hidden;
+    text-indent: -1000px;
+}
+.btn-right {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 106px;
+    height: 108px;
+}
+.btn-right.on {
+    background-position: -150px -220px;
+}

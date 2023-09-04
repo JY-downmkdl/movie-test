@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.movie.mapper.MovieMapper">
+	<select id="getList" resultType="org.movie.domain.MovieDTO">
+		select movcode, movname, movdirector, movgenre, movgrade, movrunningtime, 
+		to_char( movrelease,'YYYY"년" MM"월" DD"일' ) as movrelease, movposter, filename, uploadpath, fullname from movies
+	</select>
+	<insert id="insert">
+		insert into movies(movcode, movname, movdirector, movgenre, movgrade, movrunningtime, movrelease, fileName, uploadPath, fullname )
+		values(seq_movcode.nextval, #{movname}, #{movdirector}, #{movgenre}, #{movgrade}, #{movrunningtime}, #{movrelease}, #{fileName}, #{uploadPath}, #{fullname})
+	</insert>
+	<select id="read" resultType="org.movie.domain.MovieDTO">	
+		select * from movies where movcode = #{movcode}
+	</select>
+	<select id="movsearch" resultType="org.movie.domain.MovieDTO">	
+		select  movcode, movname, to_char( movrelease,'YYYY"년" MM"월" DD"일' ) as movrelease, 
+		movposter, filename, uploadpath, fullname from movies where movname like '%'|| #{movname} || '%'
+	</select>
+	
+	<delete id="delete">
+		delete from movies where movcode = #{movcode}
+	</delete>
+	<update id="update">
+		update movies set movname = #{movname},
+		movdirector = #{movdirector},
+		movgenre = #{movgenre},
+		movgrade = #{movgrade},
+		movrunningtime = #{movrunningtime},
+		movrelease = #{movrelease},
+		filename = #{fileName},
+		uploadPath = #{uploadPath},
+		fullname = #{fullname} where movcode = #{movcode}
+	</update>
+</mapper>

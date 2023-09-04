@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.movie.mapper.SchedulesMapper">
+	<resultMap type="org.movie.domain.SchedulesDTO" id="schMap">
+		<id property="movcode" column="schmovcode"/>
+		<result property="schall" column="schall"/>
+		<result property="schtime" column="schtime"/>
+		<result property="schthcode" column="schthcode"/>
+		<result property="schmovcode" column="schmovcode"/>
+	</resultMap>
+	<resultMap type="org.movie.domain.MovieDTO" id="movMap">
+		<result property="m.movname" column="movname"/>
+		<result property="movcode" column="movcode"/>
+	</resultMap>
+	<!-- 영화관 코드로 스케줄 찾기 -->
+	<select id="readbythcode" resultMap="schMap">
+		<!--  select DISTINCT schmovcode from schedules where schthcode = #{thcode} order by schmovcode-->
+		<!-- select * from schedules where schthcode=#{thcode} order by schmovcode, schall, schtime -->
+		select m.movname, s.schall, s.schtime from movies m , schedules s 
+		where  m.movcode = s.schmovcode(+) and s.schthcode= #{thcode} order by m.movname, s.schtime
+	</select>
+	<!-- schmovcode 코드, 영화관 코드 로 schall, schtime 찾기 -->
+	<select id="readbycodes" resultType="org.movie.domain.SchedulesDTO" parameterType="map">
+		select *  from  schedules
+			where  schmovcode= #{schmovcode} and schthcode= #{schthcode}
+	</select>
+	<!-- 영화 코드, 영화관 코드, 영화 타임으로 관 정보 찾기-->
+	<select id="readbytimes" resultType="org.movie.domain.SchedulesDTO" parameterType="map">
+		select * from schedules
+		where  schmovcode= #{schmovcode} and schthcode= #{schthcode}
+		 and to_char(schtime, 'yyyy-mm-dd') like '%'|| #{schtime} || '%'
+		  order by schall, schtime
+	</select>
+</mapper>

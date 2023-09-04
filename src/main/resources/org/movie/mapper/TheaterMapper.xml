@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.movie.mapper.TheaterMapper">
+<resultMap type="org.movie.domain.TheaterDTO" id="theaterMap">
+		<result property="thcode" column="thcode"/>
+		<result property="thname" column="thname"/>
+		<result property="thaddress" column="thaddress"/>
+		<collection property="schedulesList" resultMap="schedulesMap"/>
+	</resultMap>
+	<resultMap type="org.movie.domain.SchedulesDTO" id="schedulesMap">
+		<result property="schall" column="schall"/>
+		<result property="schtime" column="schtime"/>
+		<result property="thcode" column="schthcode"/>
+		<result property="movcode" column="schmovcode"/>
+	</resultMap>
+	<!-- 코드가지고 영화관 찾기 -->
+	<select id="readbycode" resultMap="theaterMap">
+		select
+		th.thcode, thname, thaddress
+   	 	from theaters th left outer join schedules sch on th.thcode = sch.schthcode
+        where th.thcode = #{thcode}
+	</select>
+	<!-- 영화관 지역명으로 영화관 찾기 -->
+	<select id="readbyadd"  resultType="org.movie.domain.TheaterDTO">
+		select * from theaters
+        where thaddress like ''|| #{location} || '%'
+	</select>
+	<!-- 서치용 영화관 찾기 -->
+	<select id="thsearch"  resultType="org.movie.domain.TheaterDTO">
+		select * from theaters
+        where thaddress like '%'|| #{keyword} || '%' or thname like '%'|| #{keyword} || '%'
+	</select>
+	<!-- 전체조회 -->
+	<select id="getList" resultType="org.movie.domain.TheaterDTO">
+		select * from theaters
+	</select>
+	
+	</mapper>

@@ -1,0 +1,61 @@
+.contentsStart{
+margin-top: 80px;
+}
+
+.contentsStart h1{
+    font-size: 28px;
+}
+
+.search-cate-title h2{
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.search-cate-title h2 span{
+    color: tomato;
+}
+.search-movie{
+    position: relative;
+    padding-bottom: 20px;
+}
+.search-theater, .search-director{
+    margin-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid #333;
+    position: relative;
+}
+.click_more{
+    position: absolute;
+    right: 0;
+}
+
+.search_result ul{
+    display: flex;
+    justify-self: start;
+}
+
+.search-movie .search_result li {
+    width: 160px;
+    padding-left: 30px;
+}
+
+.search_result img{
+    width: 100%;
+}
+
+.box-contents .title{
+    display: block;
+}
+
+
+.search-theater ul{
+    padding-left: 30px;
+}
+.search-theater h3{
+    font-size: 14px;
+    width: 100%;
+}
+
+.search-theater h3 span{
+    font-size: 11px;
+}

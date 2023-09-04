@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<!-- AccessDeniedHandler 인페를 구현체 클래스를 빈으로 등록한다. -->
+	<bean id="customAccessDenied" class="org.movie.security.CustomAccessDeniedHandler"></bean>
+	
+	<!-- 로그인 성공시 인페 구현 클래스 빈으로 등록 -->
+	<bean id="customLoginSuccess" class="org.movie.security.CustomLoginSuccessHandler"></bean>
+	
+	<!-- CustomUserDetailService 빈으로 등록 -->
+	<bean id="customUserDetailService" class="org.movie.security.CustomUserDetailService"></bean>
+
+	<!-- 비번 암호화 -->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	
+	<!-- 시큐리티 시작점 -->
+	<security:http>
+		<security:intercept-url pattern="/sample/all" access="permitAll"/>
+		<security:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>
+		<!-- <security:intercept-url pattern="/member/mypage" access="hasRole('ROLE_MEMBER', 'ROLE_ADMIN')"/> 
+		<security:intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>-->
+		<!-- 로그인 -->
+		<security:form-login login-page="/member/login"/>
+		<security:remember-me data-source-ref="dataSource"
+		token-validity-seconds="604800"/>
+		<!-- 로그아웃 -->
+		<security:logout logout-url="/logout" invalidate-session="true" logout-success-url="/index"
+		delete-cookies="remember-me, JSESSION_ID"/>
+		<!-- 에러 페이지 -->
+		<security:access-denied-handler ref="customAccessDenied"/>
+		<!-- 에러 페이지 -->
+		<security:access-denied-handler error-page="/accessError"/>
+	</security:http>
+	<!-- 스프링 시큐리티 동작하기 위해 필요한 존재 -->
+	<!-- 인증 매니저 -->
+	<security:authentication-manager>
+		<!-- 인증 제공자( 실제 인증 작업을 처리 ) -->
+		<security:authentication-provider user-service-ref="customUserDetailService">
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+</beans>
