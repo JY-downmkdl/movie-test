@@ -3,6 +3,7 @@ package org.movie.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.movie.domain.ReservationDTO;
 import org.movie.domain.SchedulesDTO;
 
 public interface SchedulesMapper {
@@ -11,10 +12,16 @@ public interface SchedulesMapper {
 	
 	//영화관 코드와 영화 코드로 시간 찾기
 	public List<SchedulesDTO> readbycodes(@Param("schmovcode")String schmovcode, @Param("schthcode")String schthcode);
+	
 	//영화관 코드와 영화 코드로 시간 찾기
 	public List<SchedulesDTO> readbytimes(
 			@Param("schmovcode")String schmovcode,
 			@Param("schthcode")String schthcode,
-			@Param("schtime")String schtime);
+			@Param("schtime")String schtime
+	);
+	
+	
+	//업뎃하기 ( 스케쥴 )
+	public int update(ReservationDTO rto);
 	
 }

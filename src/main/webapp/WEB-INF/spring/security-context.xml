@@ -36,6 +36,7 @@
 		<!-- 에러 페이지 -->
 		<security:access-denied-handler error-page="/accessError"/>
 	</security:http>
+	
 	<!-- 스프링 시큐리티 동작하기 위해 필요한 존재 -->
 	<!-- 인증 매니저 -->
 	<security:authentication-manager>

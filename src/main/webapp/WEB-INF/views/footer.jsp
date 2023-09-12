@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/reset.css">
-<link rel="stylesheet" href="/resources/css/header footer.css">
+
 </head>
 <body>
 <footer>
@@ -22,7 +21,7 @@
 	    <li><a href="http://www.cgv.co.kr/rules/disclaimer.aspx">법적고지</a></li>
 	    <li><a href="http://www.cgv.co.kr/rules/emreject.aspx">이메일주소무단수집거부</a></li>
 	    <li><a href="http://corp.cgv.co.kr/company/ethicalManagement/ceoMessage.aspx" target="_blank">윤리경영</a></li>
-	    <li><a href="/company/cyberAudit.aspx" class="empha-red">사이버감사실</a></li>
+	    <li><a href="#" class="empha-red">사이버감사실</a></li>
 	</ul>
 	<article class="company_info_wrap">
 	    <section class="company_info">
@@ -85,14 +84,7 @@
         }
     });
 </script>
-        <!-- footer_area (e) -->
 
-        <div class="adFloat2" style="display:none">
-
-            <iframe src="//ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Popicon" width="154" height="182" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" allowtransparency="true" id="ad_float1" title="광고-셰이프 오브 워터 사랑의 모양 " style="display: none;"></iframe>
-        </div>
-        <script type="text/javascript">            OpenAD();</script>
-        <!-- //Float Ad -->
 	</footer>
 </body>
 </html>

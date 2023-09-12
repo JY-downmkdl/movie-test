@@ -15,7 +15,7 @@
 	</select>
 	<select id="movsearch" resultType="org.movie.domain.MovieDTO">	
 		select  movcode, movname, to_char( movrelease,'YYYY"년" MM"월" DD"일' ) as movrelease, 
-		movposter, filename, uploadpath, fullname from movies where movname like '%'|| #{movname} || '%'
+		movposter, filename, uploadpath, fullname, movrunningtime from movies where movname like '%'|| #{movname} || '%'
 	</select>
 	
 	<delete id="delete">

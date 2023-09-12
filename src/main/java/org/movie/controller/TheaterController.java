@@ -31,21 +31,17 @@ public class TheaterController {
 	@GetMapping("/location")
 	public void goLocation(String thname, Model model) {
 		log.info("시에터 컨트롤러");
-		log.info(thname+"!!!!!!!!!!!!!!!!");
-		log.info("코드 있어요");
+		log.info(thname+"-----------------------");
 		String[] locations = {"울산","서울","경기","인천","강원","충청","대구","부산","경상","제주"};
 		model.addAttribute("locations", locations);
+		
 		List<TheaterDTO> thlist = new ArrayList<TheaterDTO>();
 		thlist.addAll(service.readbyadd(thname));
 		model.addAttribute("thlist", thlist);
-//		String[] thnames = {service.readbyadd("울산").get(0).getThname(), service.readbyadd("울산").get(1).getThname()};
-//		model.addAttribute("thnames", thnames);
-//		String[] thaddress = {service.readbyadd("울산").get(0).getThaddress(),service.readbyadd("울산").get(1).getThaddress()};
-//		model.addAttribute("thaddresses", thaddress);
-//		int[] thcodes = {service.readbyadd("울산").get(0).getThcode(),service.readbyadd("울산").get(1).getThcode()};
-//		model.addAttribute("thcodes", thcodes);
-		//log.info(thnames[0]+""+thnames[1]);
 	}
+
+	
+	
 	@ResponseBody
 	@PostMapping("/readbycodeaction")
 	public List<TheaterDTO> locaddress(@RequestParam("locaddress")String locaddress) {

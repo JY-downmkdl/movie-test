@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.movie.mapper.ReservationMapper">
+	<insert id="insert">
+		insert into reservation
+		values(#{rvcode},#{rvuserid},#{rvmovcode},#{rvmovname},
+		#{rvthcode},#{rvthname}, TO_DATE(#{rvschtime}, 'YYYY-MM-DD HH24:MI'), #{rvrunning}, #{rvschall},
+		#{rvcount},#{rvschseats},#{rvlist},#{rvprice}, sysdate, #{paymethod})
+	</insert>
+	<update id="update">
+		update schedules set seatcount = seatcount - #{rvcount},
+		seatlist = seatlist || #{rvschseats}||','
+		where schtime= TO_DATE(#{rvschtime}, 'YYYY-MM-DD HH24:MI')
+	 	and schthcode= #{rvthcode}
+ 	 	and schmovcode = #{rvmovcode} 
+	</update>
+	<!-- 예매 내역 -->
+	<resultMap type="org.movie.domain.ReservationDTO" id="rvMap">
+		<id property="rvcode" column="rvcode"/>
+		<result property="rvuserid" column="rvuserid"/>
+		<result property="rvmovcode" column="rvmovcode"/>
+		<result property="rvmovname" column="rvmovname"/>
+		<result property="rvthcode" column="rvthcode"/>
+		<result property="rvthname" column="rvthname"/>
+		<result property="rvschtime" column="rvschtime"/>
+		<result property="rvrunning" column="rvrunning"/>
+		<result property="rvschall" column="rvschall"/>
+		<result property="rvcount" column="rvcount"/>
+		<result property="rvschseats" column="rvschseats"/>
+		<result property="rvlist" column="rvlist"/>
+		<result property="rvprice" column="rvprice"/>
+		<result property="rvtime" column="rvtime"/>
+		<result property="paymethod" column="paymethod"/>
+		<collection property="movList" resultMap="movMap"/>
+	</resultMap>
+	<resultMap type="org.movie.domain.MovieDTO" id="movMap">
+		<result property="movcode" column="movcode"/>
+		<result property="movname" column="movname"/>
+		<result property="movdirector" column="movdirector"/>
+		<result property="movgenre" column="movgenre"/>
+		<result property="movgrade" column="movgrade"/>
+		<result property="movrunningtime" column="movrunningtime"/>
+		<result property="movrelease" column="movrelease"/>
+		<result property="movposter" column="movposter"/>
+		<result property="fileName" column="fileName"/>
+		<result property="uploadPath" column="uploadPath"/>
+		<result property="fullname" column="fullname"/>
+	</resultMap>
+	<select id="selectReserv" resultMap="rvMap">
+		select rv.*, mov.* from reservation rv left outer join movies mov on rv.rvmovcode = mov.movcode
+		where rvuserid = #{userid} and TO_CHAR(rvschtime) >= TO_CHAR(ADD_MONTHS(sysdate, -1), 'yyyy-mm-dd')
+	</select>
+</mapper>

@@ -4,7 +4,7 @@
     margin-bottom: 20px;
 }
 
-        /*티켓 스타일*/
+/*티켓 스타일----------------------------------------------------*/
 #ticket .steps {
     position: relative;
     width: 996px;
@@ -53,7 +53,7 @@
     width: 254px;
     height: 100%;
 }
-/*.movie-select .sortmenu {*/
+/*.movie-select-------------------------------------*/
 .sortmenu {
     float: left;
     /*width: 244px;*/
@@ -156,7 +156,7 @@
 
 
 
-/*영화 목록*/
+/*영화 목록-----------------------------------------------------------------------------------------------*/
 .movie-list > ul {
     width: 280px;
 }
@@ -201,7 +201,7 @@
 
 
 
-/*------극장 선택하기*/
+/*------극장 선택하기--------------------------------------------------------------------------*/
 #ticket .section-theater {
     width: 265px;
     /* height: 528px; */
@@ -266,7 +266,7 @@
     background-color: #e6e4d9;
 }
 
-/*지점명 보이기*/
+/*지점명 보이기------------------------------------------------------------------*/
 .theater-select .theater-list .theater-area-list > ul > li.selected > a {
     background: url('/resources/img/ticket/theaterarealist_item_selected.png') no-repeat right;
     background-color: transparent;
@@ -316,7 +316,7 @@
     padding-right: 5px;
 }
 
-/*날짜*/
+/*날짜-----------------------------------------------------------------------------*/
 .section-date {
     width: 91px;
     /* height: 528px; */
@@ -434,7 +434,7 @@ a.skip_to_something {
     color: #fff;
 }
 
-/* 영화 시간*/
+/* 영화 시간----------------------------------------------------------------------------*/
 .step1 .section-time {
     width: 346px;
     /* height: 528px; */
@@ -595,7 +595,7 @@ a.skip_to_something {
     filter: alpha(opacity=25);
 }
 
-/*진행상황목록*/
+/*진행상황목록---------------------------------------------------------------------------------------*/
 #ticket_tnb {
     position: relative;
     width: 100%;
@@ -610,9 +610,49 @@ a.skip_to_something {
     padding: 10px 0;
     position: relative;
 }
+/* 버튼들---------------- */
+.tnb .btn-left {
+    float: left;
+    width: 106px;
+    height: 108px;
+    margin-right: 24px;
+    background: url(/resources/img/ticket/tnb_buttons.png) no-repeat;
+    background-position: 0 0;
+    overflow: hidden;
+    text-indent: -1000px;
+}
 .tnb.step1 .btn-left {
     display: none;
 }
+
+.btn-right {
+    background: url('/resources/img/ticket/tnb_buttons.png') no-repeat;
+    background-position: 0 0;
+    overflow: hidden;
+    text-indent: -1000px;
+}
+.btn-right {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 106px;
+    height: 108px;
+}
+.tnb.step1 .btn-right {
+    background-position: 0 -220px;
+}
+.tnb.step1 .btn-right.on {
+    background-position: -150px -220px;
+    
+}
+.tnb.step2 .btn-right {
+    background-position: 0 -330px;
+}
+.tnb.step2 .btn-right.on {
+    background-position: -150px -330px;
+}
+
+
 .tnb .info {
     float: left;
     height: 108px;
@@ -788,6 +828,8 @@ a.skip_to_something {
     background: url(/resources/img/ticket/tnb_steps.png) no-repeat 50% -298px;
 }
 
+
+
 .tnb_step_btn_right_before {
     position: absolute;
     top: 10px;
@@ -796,26 +838,754 @@ a.skip_to_something {
     height: 108px;
 }
 
-
 .tooltip_notice {
     display: none;
 }
-.btn-right {
-    background-position: 0 -220px;
+
+
+
+/*진행상황목록---------------------------------------------------------------------------------------*/
+
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------------step2------*/
+/*-----------------------------------------------------------------------------------------------------------------------------------------------------------step2------*/
+#ticket .steps .step2 {
+    background-color: #d4d3c9;
+    height: 600px;
 }
-.btn-right {
-    background: url('/resources/img/ticket/tnb_buttons.png') no-repeat;
-    background-position: 0 0;
+
+#ticket .section-seat {
+    float: none;
+    width: 992px;
+    min-height: 600px;
+}
+.section.section-seat .col-head {
+    background-position: 50% -124px;
+}
+
+.section-seat .person_screen {
+    position: relative;
+    border-bottom: 2px solid #d4d3c9;
+    display: inline-block;
+    padding: 17px 0 3px 0;
+    width: 100%;
+    height:150px;
+}
+.section-seat .person_screen .section {
+    float: left;
+}
+.step2 .section-numberofpeople {
+    width: 460px;
+    height: 100%;
+}
+.step2 .section-numberofpeople .col-body .numberofpeople-select {
+    margin-left: 15px;
+    padding-right: 18px;
+    border-right: 1px solid #d4d3c9;
+    display: inline-block;
+}
+
+.section-numberofpeople .col-body .numberofpeople-select .group {
+    float: left;
+    margin-bottom: 8px;
+}
+.section-numberofpeople .col-body .numberofpeople-select .group span.title {
+    float: left;
+    width: 55px;
+    height: 22px;
+    line-height: 22px;
+    color: #666;
+    letter-spacing: -0.1em;
+}
+.section-numberofpeople .col-body .numberofpeople-select .group ul {
+    float: left;
+    width: auto;
+    height: 22px;
+    line-height: 22px;
     overflow: hidden;
-    text-indent: -1000px;
 }
-.btn-right {
+
+.section-numberofpeople .col-body .numberofpeople-select .group ul li {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border: 1px solid #d6d3ce;
+    background-color: #f2f0e5;
+    float: left;
+    margin-right: 6px;
+}
+
+.section-numberofpeople .col-body .numberofpeople-select .group ul li.selected {
+    border-color: #000;
+    background-color: #333;
+}
+.section-numberofpeople .col-body .numberofpeople-select .group ul li a {
+    display: block;
+    height: 100%;
+    color: #333;
+    font-family: Verdana;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+.section-numberofpeople .col-body .numberofpeople-select .group ul li.selected a {
+    margin: 1px;
+    border: 1px solid #5c5c5c;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    color: #fff;
+}
+.section-numberofpeople .col-body .numberofpeople-select .group ul li.dimmed {
+    border-color: #bbb;
+    background-color: #bbb;
+}
+.section-numberofpeople .col-body .numberofpeople-select .group ul li.dimmed a {
+    margin: 1px;
+    border: 1px solid #fff;
+    color: #fff;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+}
+
+/*영화 이름,관,시간*/
+.section-screen-select > div {
+    position: relative;
+    height: 100%;
+    letter-spacing: -1px;
+}
+#user-select-info {
+    width: auto;
+    margin: 20px 0 0 20px;
+}
+p.theater-info {
+    margin-bottom: 20px;
+}
+#user-select-info p.theater-info span {
+    font-size: 1.1em;
+    padding: 0 11px 0 10px;
+    border-right: 1px solid #ccc;
+    max-width: 200px;
+    height: 15px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#user-select-info p.theater-info span:first-child {
+    padding-left: 0;
+    max-width: 150px;
+}
+#user-select-info p.theater-info span:last-child {
+    border: none;
+    padding-right: 0;
+}
+#user-select-info p.theater-info .seatNum .restNum {
+    color: #CA4D10;
+}
+#user-select-info p.playYMD-info {
+    display: inline-block;
+    line-height: 1.2em;
+    margin-top: 12px;
+    color: #5a5a5a;
+    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    font-size: 1.9em;
+    margin-top: 5px;
+}
+#user-select-info p.playYMD-info b {
+    display: block;
+    float: left;
+    line-height: 20px;
+}
+#user-select-info p.playYMD-info b.exe {
+    font-size: 0.9em;
+    margin: 0 7px 0 5px;
+    line-height: 15px;
+}
+#ticket .section-seat .person_screen .section::after {
+    content: '';
+    clear: both;
+}
+
+/*좌석선택*/
+.section-seat .theater {
+    margin-left: 20px;
+    width: 826px;
+    height: 365px;
+    position: relative;
+}
+.section-seat .theater_minimap {
+    position: relative;
+    width: auto;
+    padding-top: 20px;
+}
+.section-seat .theater .screen {
+    width: 100%;
+    height: 25px;
+    margin: 0 auto;
+    line-height: 25px;
+    text-align: center;
+    background: url(/resources/img/ticket/screen_bg.png) repeat-x left;
+}
+#ticket .section-seat .theater .screen .text {
+    width: 57px;
+    height: 25px;
+    display: inline-block;
+    zoom: 1;
+    background: url(/resources/img/ticket/screen_text.png) no-repeat;
+}
+.section-seat .theater .seats {
+    position: relative;
+    margin: 50px auto;
+    height: 627px;
+}
+
+.section-seat .theater .seats .row {
+    /* position: absolute; */
+    height: 24px;
+    line-height: 24px;
+    display: flex;
+    margin-bottom: 2px;
+}
+.section-seat .theater .seats .row .label {
+    /* position: absolute; */
+    left: 0px;
+    margin: 0px 25px 1px 0;
+    width: 25px;
+    height: 24px;
+    line-height: 24px;
+    border-top: 1px solid #d4d3c9;
+    font-size: 11px;
+    font-family: Verdana;
+    font-weight: bold;
+    text-align: center;
+}
+
+.section-seat .theater .seats .row .seat {
+    /* position: absolute; */
+    width: 25px;
+    height: 24px;
+    /* padding: 3px; */
+    margin-right: 2px;
+    line-height: 24px;
+    text-align: center;
+    background: #666;
+    color: #fff;
+}
+.section-seat .theater .seats .row .seat a .no {
+    width: 25px;
+    height: 24px;
+    background-color: #666;
+    background-position: 1000px 1000px;
+}
+
+/*선택 중 좌석*/
+.section-seat .theater .seats .row .seat.preselected a .no {
+    background-color: #ad1712;
+    display: block;
+}
+
+/*선택한 좌석*/
+.section-seat .theater .seats .row .seat.selected a .no {
+    background-color: #ad1712;
+    display: block;
+}
+
+/*예매된 좌석*/
+#ticket .section-seat .theater .seats .row .seat.reserved a .no {
+    background-color: #bbb;
+    display: block;
+}
+
+
+/*legend*/
+.section-seat .theater_minimap .legend {
     position: absolute;
-    top: 10px;
-    right: 0;
-    width: 106px;
-    height: 108px;
+    top: 20px;
+    right: 15px;
+    width: auto;
+    height: 100%;
 }
-.btn-right.on {
-    background-position: -150px -220px;
+/* 시트 아이콘 없애고 컬러링으로 대체 */
+/* #ticket .section-seat .seat-icon-desc .icon > span {
+    background: url(./img/ticket/seat_icons_20210617.png) no-repeat;
+}*/
+.section-seat .seat-icon-desc {
+    margin-left: 5px;
+    line-height: 15px;
+}
+.section-seat .seat-icon-desc .icon {
+    position: relative;
+    display: block;
+    margin-top: 8px;
+    padding-left: 19px;
+    height: 15px;
+    color: #666;
+    font-size: 12px;
+}
+.section-seat .seat-icon-desc .icon:first-child {
+    margin-top: 0;
+}
+.section-seat .seat-icon-desc .icon > span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 15px;
+    height: 16px;
+    padding: 0;
+}
+
+/*다시하기*/
+.step2 a.btn-refresh {
+    display: block;
+    position: absolute;
+    height: 20px;
+    line-height: 24px;
+    top: 7px;
+    right: 16px;
+    padding-right: 20px;
+    color: #e6e6e6;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    background: url(/resources/img/ticket/step_refresh_btn.png) no-repeat 100% 50%;
+}
+
+/*-- step3------------------------------------------------------------------------*/
+/*-- step3------------------------------------------------------------------------*/
+/* #ticket .stpes .step3 {
+    display: flex;
+    height: 350px;
+} */
+#ticket_payment_method {
+    float: left;
+    width: 744px;
+    min-height: 350px;
+}
+.ts3_titlebar {
+    width: 744px;
+    display: block;
+    position: relative;
+    height: 33px;
+    line-height: 33px;
+    background-color: #333;
+    color: #e0e0e0;
+    clear: both;
+    margin-bottom: 3px;
+}
+.ts3_titlebar.ts3_t1 .header {
+    display: block;
+    float: left;
+    font-size: 17px;
+    height: 100%;
+    margin-left: 16px;
+    font-weight: bold;
+    letter-spacing: 0;
+    text-indent: 0 
+}
+.ts3_titlebar.ts3_t1 .title {
+    display: block;
+    float: left;
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding-top: 1px;
+    letter-spacing: -2px;
+}
+
+.tpm_wrap {
+    width: 744px;
+    margin-top: 5px;
+    background-color: #f2f0e5;
+    position: relative;
+    /* margin-bottom: 30px; */
+}
+.tpm_last_pay .payment_form .table_wrap.transfer_wrap {
+    width: 450px;
+    padding: 35px 15px;
+    margin: 0 auto;
+}
+.tpm_last_pay .payment_form, .tpm_last_pay .payment_form .payment_input {
+    position: relative;
+}
+.tpm_wrap.tpm_last_pay .tpm_body {
+    display: block;
+    margin: 0;
+}
+
+.tpm_wrap.tpm_last_pay .tpm_body > div {
+    background-color: #f2f0e5;
+}
+
+.tpm_wrap.tpm_last_pay .tpm_body .payment_select {
+    position: relative;
+    width: 709px;
+    line-height: 41px;
+    margin: 0 auto;
+    border-bottom: 2px solid #d7d6cf;
+}
+.tpm_wrap.tpm_last_pay .tpm_body .payment_select > span {
+    position: relative;
+}
+.tpm_wrap.tpm_last_pay .tpm_body .payment_select label {
+    margin-left: 3px;
+    margin-right: 15px;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* 신카 설명 */
+.payment_input .payment_input_exp {
+    position: relative;
+    padding: 20px 0;
+    background-color: #ebe9df;
+    color: #666;
+    line-height: 1.5em;
+}
+.payment_input .payment_input_exp > span {
+    display: block;
+    padding-left: 28px;
+}
+.payment_input .payment_input_exp a {
+    color: #666;
+    text-decoration: underline;
+}
+
+/* 카페 설명 */
+.tpm_last_pay .transfer_wrap h6 {
+    font-size: 14px;
+    font-weight: bold;
+    height: 30px;
+}
+.tpm_last_pay .transfer_wrap > div {
+    line-height: 1.5em;
+}
+.payment_input .payment_input_exp span.alert {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    padding: 0;
+}
+
+
+/* 결제금액 */
+#ticket .step3 {
+    display: flex;
+    justify-content: space-between;
+}
+.ticket_payment_summary {
+    /* float: right; */
+    width: 217px;
+    position: relative;
+}
+.tps_wrap {
+    position: absolute;
+    top: 0px;
+}
+.tps_wrap .tps_body {
+    background-color: #fff;
+    padding-bottom: 15px;
+    padding-top: 19px;
+    box-shadow: 0px 2px 3px #CCC;
+    width: 216px;
+}
+.tps_wrap .tps_body .summary_box {
+    width: 187px;
+    margin: 0 auto;
+    border-radius: 4px;
+    background-color: #202020;
+    /* margin-top: 20px; */
+    padding: 2px;
+}
+.tps_wrap .tps_body .summary_box.total_box .payment_header {
+    height: 32px;
+    line-height: 32px;
+    background-color: #fff;
+    font-size: 14px;
+}
+.tps_wrap .tps_body .summary_box.total_box .payment_footer .result {
+    background-color: #474747;
+    color: #fff;
+    box-shadow: inset 0 0 10px #202020;
+}
+.tps_wrap .tps_body .summary_box .payment_footer .result .num {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+.tps_wrap .tps_body .summary_box .payment_footer .result .won {
+    position: relative;
+    top: -2px;
+    margin-left: 2px;
+}
+.tps_wrap .tps_footer {
+    margin-top: 10px;
+}
+.tps_wrap .tps_footer ul {
+    list-style: none;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 216px;
+    overflow: hidden;
+}
+.tps_wrap .tps_footer li:first-child {
+    border: none;
+}
+.tps_wrap .tps_footer li a {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    height: 31px;
+}   
+.tps_wrap .tps_footer li a img {
+    /* height: 100%; */
+    height: 31px;
+    vertical-align: middle;
+}
+.tps_wrap .tps_footer li a span.desc {
+    margin-left: 4px;
+    width: 122px;
+    height: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #666;
+    font-size: 10px;
+}
+
+/* step 3 진행상황 목록-----------------*/
+.tnb.step3 {
+    position: relative;
+    font-family: "Noto Sans KR";
+}
+.tnb.step3 .btn-left {
+    background-position: 0 -110px;
+}
+.tnb.step1 .info.payment-ticket, .tnb.step3 .info.payment-ticket {
+    display: none;
+}
+.tnb.step3 .info.path {
+    display: none;
+}
+.tnb.step3 .tooltip_notice {
+    display: block;
+    position: absolute;
+    top: -80px;
+    right: 15px;
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 1.333em;
+    background-color: #3a3a3a;
+    border-radius: 7px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+}
+.tnb.step3 .tooltip_notice:before {
+    content: '';
+    position: absolute;
+    left: 65px;
+    bottom: -5px;
+    border: 6px solid #3a3a3a;
+    transform: rotate(45deg);
+    box-shadow: 4px 2px 8px rgba(0, 0, 0, 0.25);
+}
+.tnb.step3 .tooltip_notice a {
+    display: block;
+    padding: 12px 17px 16px;
+    color: #fff;
+}
+.tnb.step3 .tooltip_notice a strong {
+    font-size: 1em;
+    font-size: 1.167em;
+    line-height: 1.429em;
+}
+
+.tnb.step3 .btn-right {
+    background-position: 0 -550px;
+    width: 220px;
+}
+.tnb.step3 .tooltip_notice a .cgvIcon.system.notice {
+    width: 16px;
+    height: 16px;
+    margin: 2px 0 0 4px;
+    vertical-align: top;
+    /* background: transparent url(data:image/svg+xml;charset=UTF-8, %3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3e%3cmask id='a' width='16' height='16' x='0' y='0' maskUnits='userSpaceOnUse' style='mask-type:alpha'%3e%3cpath fill='%23fff' d='M8 .727a7.273 7.273 0 1 1 0 14.546A7.273 7.273 0 0 1 8 .727zm0 .728a6.545 6.545 0 1 0 0 13.09 6.545 6.545 0 0 0 0-13.09zm.036 5.818c.302 0 .546.244.546.545v4a.546.546 0 0 1-1.091 0v-4c0-.301.244-.545.545-.545zM8 4.363a.727.727 0 1 1 0 1.455.727.727 0 0 1 0-1.454z'/%3e%3c/mask%3e%3cg mask='url(%23a)'%3e%3cpath fill='%23fff' d='M8 .727a7.273 7.273 0 1 1 0 14.546A7.273 7.273 0 0 1 8 .727zm0 .728a6.545 6.545 0 1 0 0 13.09 6.545 6.545 0 0 0 0-13.09zm.036 5.818c.302 0 .546.244.546.545v4a.546.546 0 0 1-1.091 0v-4c0-.301.244-.545.545-.545zM8 4.363a.727.727 0 1 1 0 1.455.727.727 0 0 1 0-1.454z'/%3e%3c/g%3e%3c/svg%3e) center scroll no-repeat; */
+}
+.tnb.step3 .tooltip_notice a span {
+    color: #ff8383;
+    line-height: 1.417em;
+}
+
+
+/*-----------------------------------------------------------------------------------step4*/
+/*-----------------------------------------------------------------------------------step4*/
+#ticket .steps .step4 {
+    display: none;
+    background-color: #d4d3c9;
+    overflow: hidden;
+    padding-bottom: 2px;
+    height: 600px;
+}
+#ticket .section-complement {
+    width: 992px;
+}
+#ticket .section.section-complement .col-head {
+    background-position: 50% -157px;
+}
+#ticket .section .col-body {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+#ticket .section-complement .article.result {
+    float: left;
+    /* margin: 0 auto; */
+    width: 580px;
+    padding: 30 0 0 100px;
+    background-color: #f2f0e5;
+}
+}
+/*예매가 완료되었습니다*/
+#ticket .section-complement .article.result .text_complement {
+    height: 107px;
+    line-height: 107px;
+    text-align: center;
+}
+#ticket .section-complement .article.result .text_complement img {
+    vertical-align: middle;
+}
+/*영화정보*/
+#ticket .section-complement .article.result .ticket_summary_wrap {
+    overflow: hidden;
+    margin-bottom: 24px;
+    margin-top: 30px;
+}
+#ticket .section-complement .article.result .ticket_summary_wrap .ticket_summary {
+    float: left;
+    width: 539px;
+}
+#ticket .section-complement .article.result .ticket_summary_wrap .ticket_summary .poster {
+    float: left;
+    width: 110px;
+    height: 158px;
+    line-height: 158px;
+    margin-right: 30px;
+    overflow: hidden;
+}
+#ticket .section-complement .article.result .ticket_summary_wrap .ticket_summary .poster img {
+    visibility: hidden;
+    width: 100%;
+    vertical-align: middle;
+}
+#ticket .section-complement .article.result .ticket_summary_wrap .ticket_summary table {
+    width: 395px;
+    border: none;
+}
+#ticket .section-complement .article.result .ticket_summary_wrap .ticket_summary table tr {
+    height: 24px;
+    line-height: 24px;
+    vertical-align: top;
+}
+#ticket .section-complement .article.result .ticket_summary_wrap .ticket_summary table tr th {
+    width: 71px;
+    font-weight: normal;
+    text-align: left;
+}
+#ticket .section-complement .article.result .ticket_summary_wrap .ticket_summary table tr td {
+    height: inherit;
+    line-height: inherit;
+    background: none;
+}
+
+#ticket .section-complement .article.result .ticket_summary_wrap .ticket_summary table tr td .red, #ticket .section-complement .article.result .ticket_summary_wrap .ticket_summary table tr td .price {
+    color: #c62424;
+    font-weight: normal;
+    font-family: Verdana;
+}
+
+/*버튼-------------*/
+.article.result .ticket_button_group {
+    position: relative;
+    margin-bottom: 20px;
+    height: 77px;
+    border-bottom: solid 1px #c9c7bc;
+}
+.article.result .ticket_button_group > div {
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+.article.result .ticket_button_group .btn_step4 > span {
+    display: block;
+    width: 129px;
+    height: 47px;
+    background: url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step4/step4_btns.png) no-repeat -150px 0;
+    line-height: 47px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: -1px;
+    color: #fff;
+}
+.article.result .ticket_button_group .btn_step4 {
+    display: block;
+    float: left;
+}
+.article.result .ticket_button_group .btn_step4.btn_red > span {
+    background-position: 0 0;
+}
+#ticket .section-complement .article.result .ticket_button_group .btn_step4 {
+    display: block;
+    float: left;
+}
+#ticket .section-complement .article.result .ticket_button_group .btn_step4 {
+    display: block;
+    float: left;
+}
+
+/*에매 유의사항*/
+.section-complement .article.result .ticket_instructions {
+    margin-bottom: 40px;
+}
+.section-complement .article.result .ticket_instructions dl {
+    overflow: hidden;
+}
+.section-complement .article.result .ticket_instructions dl dt {
+    clear: both;
+    float: left;
+    width: 100px;
+    text-align: left;
+    line-height: 19px;
+}
+.section-complement .article.result .ticket_instructions img {
+    vertical-align: middle;
+}
+.section-complement .article.result .ticket_instructions dl dd {
+    float: left;
+    width: 470px;
+    line-height: 19px;
+}
+.section-complement .article.result .ticket_instructions dl dd ul {
+    overflow: hidden;
+}
+.section-complement .article.result .ticket_instructions dl dd ul li {
+    float: left;
+    width: 470px;
+    font-size: 11px/*padding-left:7px;background:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step4/ticket_instructions_bullet.png) no-repeat left 8px;*/;
+}
+.section-complement .article.result .ticket_instructions dl dd ul li em {
+    color: #666;
+}
+#ticket .section-complement .article.result .ticket_instructions dl dd ul li {
+    float: left;
+    width: 470px;
+    font-size: 11px/*padding-left:7px;background:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step4/ticket_instructions_bullet.png) no-repeat left 8px;*/;
 }

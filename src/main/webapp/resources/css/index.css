@@ -15,22 +15,42 @@
     height: 100%;
 }
 
+video {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+}
+
 .video_wrap{
     background-color: black;
     color: #fff;
     position: relative;
-    top: 50%;
+    top: 10%;
     left: 0;
 }
 
-.video_wrap span:first-child{
-    font-size: 48px;
+/*----------------------span 들....*/
+.movieinfo{
+	height: 0;
+}
+.movieinfo span{
+    font-size: 15px;
+    position: relative;
+    top: 250px;
+    left: -1px;   
+    z-index: 1;
+    color: #fff; 
+}
+
+.movieinfo span:first-child{
+    font-size: 30px;
     display: block;
     line-height: 72px;
+    position: relative;
+    top: 250px;
+	left: 0;    
 }
-.video_wrap span{
-    font-size: 18px;
-}
+
 .movieSelection_wrap{
     position: relative;
     height: 498px;
@@ -42,7 +62,7 @@
 }
 .movieSelection_video_controller_wrap{
     position: absolute;
-    top: 74%;
+    top: 78%;
     display: block;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8) ;

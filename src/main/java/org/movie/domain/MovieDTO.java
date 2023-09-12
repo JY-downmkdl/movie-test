@@ -19,5 +19,4 @@ public class MovieDTO {
 	private String uploadPath;
 	private String fullname;
 	
-	private int count;
 }

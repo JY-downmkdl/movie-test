@@ -1,7 +1,13 @@
 package org.movie.controller;
 
+import java.util.List;
+
 import org.movie.domain.MemberVO;
 import org.movie.service.MemberService;
+import org.movie.service.ReservationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -14,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Controller
@@ -65,9 +72,64 @@ public class MemberController {
 		return cnt;
 	}
 	
+	@Setter(onMethod_ = {@Autowired})
+	private ReservationService rvservice;
+	
+//	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
+//	@GetMapping("/mypage")
+//	public void getMypage(String userid, Model model) {
+//		if(userid == "") {
+//			return;
+//		}
+//		log.info(userid);
+//		MemberVO mv = service.read(userid);
+//		//유저 정보
+//		model.addAttribute("info",service.read(userid));
+//		
+//		//유저가 예매한 영화 1개월 내 보여주기
+//		model.addAttribute("rvlist",rvservice.reserv(userid));
+//	}
+	
+	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
 	@GetMapping("/mypage")
-	public void goMypage() {
-		log.info("마이페이지를 들어갈수 있는지 없는지");
+	public String getMypage() {
+		return "/index";
+	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
+	@PostMapping("/mypage")
+	public void goMypage(@RequestParam("userid")String userid, Model model) {
+		log.info(userid);
+		MemberVO mv = service.read(userid);
+		//유저 정보
+		model.addAttribute("info",service.read(userid));
+		
+		//유저가 예매한 영화 1개월 내 보여주기
+		model.addAttribute("rvlist",rvservice.reserv(userid));
+		
+	}
+	
+	//예매 상세보기
+	@GetMapping("/reserve")
+	public void goReservation(@RequestParam("userid")String userid, Model model) {
+		//유저 정보
+		model.addAttribute("info",service.read(userid));
+		//유저가 예약한 영화 1개월 전까지만 검색
+		model.addAttribute("rvlist",rvservice.reserv(userid));
+		
+	}
+	
+	//회원정보
+	@GetMapping("/userinfo")
+	public ResponseEntity<MemberVO> userinfo(String userid) {
+		MemberVO list = service.read(userid);
+		return new ResponseEntity<MemberVO>(list, HttpStatus.OK);
+	}
+	
+	//나의 문의내역
+	@GetMapping("/myqna")
+	public void goMyqna(Model model) {
+		log.info("문의내역 이동");
 	}
 }

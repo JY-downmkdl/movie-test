@@ -38,6 +38,11 @@ public class MemberServiceImpl implements MemberService{
 		log.info("cnt: " + cnt);
 		return cnt;
 	}
+
+	@Override
+	public MemberVO read(String userid) {
+		return m_mapper.read(userid);
+	}
 	
 	
 }

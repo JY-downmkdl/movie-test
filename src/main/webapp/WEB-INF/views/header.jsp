@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="/resources/css/theaters.css">
 <link rel="stylesheet" href="/resources/css/search.css">
 <link rel="stylesheet" href="/resources/css/ticket.css">
+<link rel="stylesheet" href="/resources/css/myPage.css">
+<link rel="stylesheet" href="/resources/css/detailMovie.css">
 </head>
 <body>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -30,12 +32,34 @@
 	            <sec:authentication property="principal" var="principal" />
 				<sec:authorize access="isAuthenticated()">
 	                <li>
-	                	<form action="/logout" method="post"><a href="">
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-                       	<img src="/resources/img/loginPassword.png" alt="">
-                      <span>로그아웃</span>
-                    </a></form>
+	                	<form action="/logout" method="post" name="logoutform"><a href="#" onclick="logout()">
+                        	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	                       	<img src="/resources/img/loginPassword.png" alt="">
+	                      	<span>로그아웃</span>
+	                    </a></form>
 					</li>
+					<!-- 권한따라 로그인/ 로그아웃 끝 -->
+					
+	                <li>
+	                	<form action="/member/mypage" method="post" name="mpform"><a href="#" onclick="goMypage()" >
+	                		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	                		<input type="hidden" name="userid" value="﻿<sec:authentication property='principal.username'/>" />
+	                   		<img src="/resources/img/loginMember.png" alt="">
+	                    	<span>myCGV</span>
+	                    </a></form>
+	                </li>
+	                 <script>
+	                 	function logout(){
+	                 		let form = document.logoutform;
+	                 		form.submit();
+	                 	}
+	                	function goMypage(){
+	                		let form = document.mpform;
+	                		let userid = $("input[name=userid]").val().trimStart();
+	                		$("input[name=userid]").val(userid);
+	                		form.submit();
+	                	}
+	                </script>
 				</sec:authorize>
 				<sec:authorize access="isAnonymous()">
 	                <li><a href="/member/login">
@@ -46,16 +70,16 @@
 	                    <img src="/resources/img/loginJoin.png" alt="">
 	                    <span>회원가입</span>
 	                </a></li>
+	                <!-- 권한따라 로그인/ 로그아웃 끝 -->
+	                <li><a href="/member/mypage">
+	                    <img src="/resources/img/loginMember.png" alt="">
+	                    <span>myCGV</span>
+	                </a></li>
 				</sec:authorize>
-				<!-- 권한따라 로그인/ 로그아웃 끝 -->
-                <li><a href="/member/mypage">
-                    <img src="/resources/img/loginMember.png" alt="">
-                    <span>myCGV</span>
-                </a></li>
-                <li><a href="">
-                    <img src="/resources/img/loginCustomer.png" alt="">
-                    <span>고객센터</span>
-                </a></li>
+	                <li><a href="">
+	                    <img src="/resources/img/loginCustomer.png" alt="">
+	                    <span>고객센터</span>
+	                </a></li>
             </ul>
         </div>
     </div>
@@ -95,22 +119,6 @@
                     <button type="submit" class="btn_totalSearch" id="btn_header_search"><i class="material-icons"></i></button>
                     </form>
                 </div>
-                <%--
-                <script>
-                	//검색 누르면 전송시키기
-                	function serchAll(){
-			        	//검색어 받아오기
-			       		//alert($(location).siblings('input[name=thaddress]').val());
-			        	let keyword = ('input[name=search]').val();
-			        	let formData = new FormData();
-			        	formdata.append("keyword", keyword);
-			        	formdata.method= "get";
-			        	formdata.action = "/search/all";
-
-			        	formdata.submit();
-			       	}
-                </script>
-                 --%>
             </ul>
         </div>
     </div>
@@ -250,11 +258,6 @@
             if (e.keyCode == 13) goSearch($('#header_keyword'));
         });
 
-         //검색 입력창 클릭 시 광고값 reset
-        $('#header_keyword').on('click', function () {
-            $(this).attr('placeholder', '');
-            $('#header_ad_keyword').val('');
-        });
 
     }); 
 
@@ -272,29 +275,6 @@
         gaEventLog('PC_GNB', '검색', $objKeyword.val());
         location = "/search/?query=" + escape($objKeyword.val());
     }
-
-   
-
-    //상단 키워드 광고 (S)
-    function AdSearchExt(txt, SearchText) {
-        $('#header_keyword').attr('placeholder', txt);
-        $('#header_ad_keyword').val(SearchText);
-    }
-
-    function hdIcoSet(left, sh) { }
-    //상단 키워드 광고 (E)
-
-    //상단광고닫기
-    function hideCgvTopAd() {
-        $(".cgv-ad-wrap").hide();
-        $('#wrap_main_notice').parent('div').css('top', 280);
-    }
-
-    //비즈스프링 클릭로그
-    function setClickLog(title) {
-        // eval("try{trk_clickTrace('EVT', '" + title + "')}catch(_e){}");
-    }
-
 </script>
 </body>
 </html>

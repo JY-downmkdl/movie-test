@@ -35,7 +35,7 @@ public class SchedulesController {
 		
 		list.addAll(service.readbythcode(schthcode));
 		
-		log.info(list);
+		log.info("확인용 : " + list);
 		return new ResponseEntity<List<SchedulesDTO>>(list, HttpStatus.OK);
 	}
 	

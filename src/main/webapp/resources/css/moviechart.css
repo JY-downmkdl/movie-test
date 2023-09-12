@@ -15,7 +15,7 @@
 }
 .tit-heading-wrap .submenu ul li {
     padding-left: 10px;
-}
+}    top: 5%;
 
 .sect-sorting{
     margin: 10px 0;
@@ -66,7 +66,7 @@ span.thumb-image {
 i.cgvIcon.etc {
     position: absolute;
     left: 7px;
-    top: -110px;
+    top: 5%;
     /* background: yellow; */
     padding: 4px;
     color: #fff;

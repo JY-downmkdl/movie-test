@@ -1,0 +1,70 @@
+@charset "UTF-8";
+[class|="wrap-movie"][class$="detail"] [class^="sect-"] {
+    padding-top: 40px;
+}
+[class|="sect-base"] h3 {
+    font: 0/0 a;
+    zoom: 1;
+    height: auto;
+    margin: 0;
+    background: none;
+    text-align: left;
+}
+[class|="sect-base"][class$="movie"] .box-image {
+    margin-right: 30px;
+    width: 185px;
+    height: 260px;
+}
+.thumb-image {
+    display: block;
+    position: relative;
+}
+[class|="sect-base"][class$="movie"] .thumb-image img {
+    width: 185px;
+    height: 260px;
+}
+
+/* 영화 정보 */
+.title {
+    display: block;
+    color: #333333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+[class|="sect-base"][class$="movie"] .box-contents {
+    width: 765px;
+}
+[class|="sect-base"] .title strong {
+    color: #1a1919;
+    font-size: 25px;
+    vertical-align: middle;
+}
+[class|="sect-base"] .score {
+    margin-top: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #d9d6c8;
+    font-size: 14px;
+}
+
+ /*--------------------영화 정보 본문 */
+[class|="sect-base"][class$="movie"] .spec {
+    padding-top: 18px;
+    line-height: 1.6;
+}
+.spec {
+    color: #333333;
+    font-size: 13px;
+    font-weight: 500;
+}
+.spec dt {
+    float: left;
+}	
+[class|="sect-base"][class*="movie"] .spec dd {
+    white-space: normal;
+    text-overflow: clip;
+    overflow: visible;
+}
+[class|="sect-base"][class$="movie"] .spec .on {
+    float: none;
+}

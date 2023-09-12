@@ -52,7 +52,7 @@
 	                    <!-- 한 리스트에 한가지 작품 -->
 	                    <li>
 	                        <div class="box-image">
-	                            <a href="/movies/detail-view?movcode=${movlist.movcode }">
+	                            <a href="/movies/detail-view?movcode=${movlist.movcode}">
 	                                <span class="thumb-image">
 	                                    <img src="/display?fileName=${movlist.fullname}" alt="${movlist.movname} 포스터" onerror="errorImage(this)">
 	                                    <!-- 영상물 등급 노출 변경 2022.08.24 -->
@@ -172,5 +172,7 @@
 		 </div>
 		<!-- /Contents Area -->
 	</div>
+	
+	    <%@ include file="../footer.jsp" %>
 </body>
 </html>

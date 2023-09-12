@@ -4,16 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.movie.domain.MovieDTO;
+import org.movie.domain.ReservationDTO;
 import org.movie.domain.SchedulesDTO;
 import org.movie.service.MovieService;
+import org.movie.service.ReservationService;
 import org.movie.service.SchedulesService;
 import org.movie.service.TheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +29,7 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @RequestMapping("/tickets/*")
+@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_MEMBER')")
 @AllArgsConstructor
 public class TicketController {
 	@Setter(onMethod_ = {@Autowired})
@@ -33,6 +38,7 @@ public class TicketController {
 	private TheaterService thservice;
 	@Setter(onMethod_ = {@Autowired})
 	private SchedulesService schservice;
+	
 	
 	@GetMapping("/ticket")
 	public void goTicket(String movcode, Model model) {
@@ -79,4 +85,25 @@ public class TicketController {
 		list.addAll(schservice.readbytimes(schmovcode, schthcode, schtime));
 		return new ResponseEntity<List<SchedulesDTO>>(list, HttpStatus.OK);
 	}
+	
+	
+	@Setter(onMethod_ = {@Autowired})
+	private ReservationService rvservice;
+	@PostMapping("/successorder")
+	public ResponseEntity<ReservationDTO> Success(ReservationDTO rvdto) {
+		log.info("결제 성공--------------------");
+		log.info("확인!!!!!!!!!!!!!!!!!!!!!!!!!!!"+rvdto.getRvuserid());
+		rvservice.reservation(rvdto);
+		rvservice.reservation2(rvdto);
+		ReservationDTO result = rvdto;
+		log.info("결제 성공--------------------");
+		 return new ResponseEntity<ReservationDTO>(result, HttpStatus.OK);
+	}
+	
+	
+//	@GetMapping("/lastOrder")
+//	public String checkOrder(@RequestParam("merchant_uid") String mu) {
+//		log.info("merchant_uid 확인 :"+ mu);
+//		return "/member/reserve?userid="+;
+//	}
 }

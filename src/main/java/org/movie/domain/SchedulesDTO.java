@@ -10,4 +10,8 @@ public class SchedulesDTO {
 	private int schmovcode;
 	
 	private String movname;
+
+	private int seatcount;
+	private String seatlist;
+	
 }

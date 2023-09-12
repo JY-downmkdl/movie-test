@@ -15,5 +15,6 @@
 <P>  The time on the server is ${serverTime}. </P>
 
 <a href="./index">main</a>
+    <%@ include file="./footer.jsp" %>
 </body>
 </html>
