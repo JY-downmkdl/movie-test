@@ -17,11 +17,12 @@ public interface SchedulesMapper {
 	public List<SchedulesDTO> readbytimes(
 			@Param("schmovcode")String schmovcode,
 			@Param("schthcode")String schthcode,
-			@Param("schtime")String schtime
+			@Param("schtime")String schtime,
+			@Param("schall")String schall
 	);
 	
 	
 	//업뎃하기 ( 스케쥴 )
-	public int update(ReservationDTO rto);
+	public int update(SchedulesDTO sto);
 	
 }

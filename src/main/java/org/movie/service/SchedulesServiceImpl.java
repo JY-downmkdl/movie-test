@@ -3,6 +3,7 @@ package org.movie.service;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.movie.domain.ReservationDTO;
 import org.movie.domain.SchedulesDTO;
 import org.movie.mapper.SchedulesMapper;
 import org.movie.mapper.TheaterMapper;
@@ -34,10 +35,15 @@ public class SchedulesServiceImpl implements SchedulesService {
 	}
 
 	@Override
-	public List<SchedulesDTO> readbytimes(String schmovcode, String schthcode, String schtime) {
+	public List<SchedulesDTO> readbytimes(String schmovcode, String schthcode, String schtime, String schall) {
 		log.info("여기는 스케쥴 서비스");
-		List<SchedulesDTO> list = mapper.readbytimes(schmovcode, schthcode, schtime);
+		List<SchedulesDTO> list = mapper.readbytimes(schmovcode, schthcode, schtime, schall);
 		return list;
+	}
+
+	@Override
+	public int update(SchedulesDTO sto) {
+		return mapper.update(sto);
 	}
 	
 	

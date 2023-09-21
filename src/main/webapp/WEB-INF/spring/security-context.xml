@@ -34,7 +34,7 @@
 		<!-- 에러 페이지 -->
 		<security:access-denied-handler ref="customAccessDenied"/>
 		<!-- 에러 페이지 -->
-		<security:access-denied-handler error-page="/accessError"/>
+		<security:access-denied-handler error-page="/index"/>
 	</security:http>
 	
 	<!-- 스프링 시큐리티 동작하기 위해 필요한 존재 -->

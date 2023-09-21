@@ -13,10 +13,12 @@ public class MovieDTO {
 	private String movgrade;
 	private String movrunningtime;
 	private String movrelease;
-	private String movposter;
+//	private String movposter;
 	
 	private String fileName;
 	private String uploadPath;
 	private String fullname;
+	
+	private int thstates;
 	
 }

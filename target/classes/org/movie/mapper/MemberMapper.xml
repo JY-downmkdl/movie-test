@@ -29,5 +29,13 @@
 	<select id = "idCheck" resultType="int" parameterType="string">
 		select count(*) from member where userid = #{userid}
 	</select>
-
+	<update id="modify">
+		update member set
+		userpw = #{userpw},
+		username =  #{username},
+		birth =  #{birth},
+		phone =  #{phone}
+		where userid =  #{userid}
+	</update>
+	
 </mapper>

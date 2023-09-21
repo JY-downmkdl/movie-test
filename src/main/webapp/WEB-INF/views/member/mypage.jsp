@@ -7,35 +7,32 @@
 <title>마이페이지</title>
 </head>
 <body>
+<%@ include file="../header.jsp" %>
 <%@ include file="./myheader.jsp" %>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-<input type="hidden" name="userid" value="﻿<sec:authentication property='principal.username'/>" />
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		let userid = $("input[name=userid]").val().trimStart();
 		$("input[name=userid]").val(userid);
-		
-		$(".snb .on a").attr("href", "/member/mypage?userid="+userid);
 	})
 </script>
 
-
-		       
 	      <div class="cols-content" id="menu">
 	       	<div class="col-aside">
 	               <div class="snb">
 	                   <ul>
 	                       <li class="on">
-	                           <a href='#'>MY CGV HOME <i></i></a>
+	                           	<a href='#' onclick="goMypage()">MY CGV HOME <i></i></a>
 	                       </li>
 	                       <li>
 	                           <a href='/member/reserve?userid=<sec:authentication property="principal.username"/>' title="현재 선택">나의 예매내역</a>
 	                       </li>
 	                       <li>
-	                           <a href="/member/myinfo">회원정보<i></i></a>
+	                           <a href='/member/myinfo?userid=<sec:authentication property="principal.username"/>'>회원정보<i></i></a>
 	                           <ul>
 	                                <li>
-	                                   <a href="/member/myinfo">개인정보 변경</a>
+	                                   <a href='/member/myinfo?userid=<sec:authentication property="principal.username"/>'>개인정보 변경</a>
 	                               </li>
 	                               <li>
 	                                   <a href="#">회원탈퇴</a>
@@ -54,7 +51,7 @@
 	                               </li>
 	                           </ul>
 	                       </li>
-	                       <li class="my-event"><a href="/user/movielog/watched.aspx">내가 본 영화</a></li> 
+	                       <li class="my-event"><a href="#">내가 본 영화</a></li> 
 	                   </ul>
 	               </div>
 	           </div>
@@ -95,8 +92,10 @@
 				                                    </div>
 			                                	</c:when>
 			                                	<c:otherwise>
-				                                    <div class="lst-item" style="display: none;">
-				                                        고객님의 최근 예매내역이 존재하지 않습니다.
+				                                    <div class="lst-item" style="display: block;">
+				                                        <ul class="display_items" >
+					                                            <li>고객님의 최근 예매내역이 존재하지 않습니다.</li>
+				                                        </ul>
 				                                    </div>
 			                                	</c:otherwise>
 			                                </c:choose>
@@ -111,7 +110,7 @@
 	                            <div class="box-inner">
 	                                <div class="tit-mycgv">
 	                                    <h3>MY Q&amp;A</h3>
-	                                    <p><em>0건</em> <a href="/user/mycgv/inquiry/qna/list.aspx">MY Q&amp;A 더보기</a></p>
+	                                    <p><em>0건</em> <a href="#">MY Q&amp;A 더보기</a></p>
 	                                </div>
 	                                <div class="col-myqna">
 	                                        <ul>

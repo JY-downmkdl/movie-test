@@ -21,6 +21,12 @@
 		value="${_csrf.token}">
 	<input type="hidden" name="userid"
 		value="﻿<sec:authentication property="principal.username"/>" />
+<script type="text/javascript">
+	$(document).ready(function(){
+		let userid = $("input[name=userid]").val().trimStart();
+		$("input[name=userid]").val(userid);
+	})
+</script>
 	<!-- -------------------------------------------------------------- -->
 	<!-- 예매 페이지 시작-->
 	<div id="contaniner" class="">
@@ -108,8 +114,6 @@
                                     					
                                     					// movcode
                                     					$("input[name=movcode]").val(result.movcode);
-                                    					
-                                    					
                                     				}
 												})
                                    				selectTime();
@@ -223,7 +227,7 @@
                                                
                                                //영화관명 클릭하면 색깔 바꾸ㅠㅣ고 아래에 극장 정보 뜨게
                                                function theaterListClickListener(event, thcode, thname, thaddress) {
-                                            	   alert("thname : " + thaddress);
+                                            	   //alert("thname : " + thaddress);
                                             	    $(".date-list ul li.day").removeClass("selected");
                                            			$(".section-time .time-list .content").empty();
                                            			$(".btn-right").removeClass("on");
@@ -249,43 +253,6 @@
 												}
                                                
                                                </script>
-												<%--<!--반복시작-->
-                                                <li class="">
-                                                    <a href="#" onclick="theaterAreaClickListener(event);return false;">
-                                                        <span class="name">지역명</span>
-                                                        <span class="count">(잔여석)</span>
-                                                    </a>
-                                                    <div class="area_theater_list nano has-scrollbar-y selected">
-                                                        <ul class="content scroll-y">
-                                                            <!--지 점명 반복 시작-->
-                                                            <li class="" style="display: list-item;">
-                                                                <a href="#" onclick="theaterListClickListener(event);return false;">
-                                                                    울산삼산
-                                                                </a>
-                                                            </li>
-                                                            <!--지점명 반복 끝-->
-                                                            <!--지점명 반복 시작-->
-                                                            <li></li>
-                                                            <!--지점명 반복 끝-->
-                                                        </ul>
-                                                        <!--스크롤 보이기-->
-                                                        <div class="pane pane-y" 
-                                                        style="display: block; opacity: 1; visibility: visible;">
-                                                            <div class="slider slider-y" 
-                                                            style="height: 50px; top: 0px;">
-                                                                <div class="slider slider-y" 
-                                                                style="height: 50px; top: 0px;">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="pane pane-x" style="display: none;
-                                                         opacity: 1; visibility: visible;">
-                                                            <div class="slider slider-x" style="width: 50px;">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <!--반복 끝!~!--> --%>
 											</ul>
 
 										</div>
@@ -372,96 +339,7 @@
 								</div>
 								<div class="placeholder">영화, 극장, 날짜를 선택해주세요.</div>
 								<div class="time-list nano">
-									<div class="content scroll-y" tabindex="-1">
-										<%--
-                                        <!--한 극장 시작-->
-                                        <div class="theater">
-                                            <span class="title">
-                                                <span class="name">2D</span>
-                                                <span class="floor">1관 3층</span>
-                                                <span class="seatcount">(총110석)</span>
-                                            </span>
-                                            <ul>
-                                                <!--한 타임 시작-->
-                                                <li data-index="0" data-remain_seat="140" 
-                                                play_start_tm="1235" play_num="2">
-                                                    <a class="button" href="#" 
-                                                    onclick="screenTimeClickListener(event);
-                                                    return false;" title="">
-                                                        <span class="time">
-                                                            <span>12:35</span>
-                                                        </span>
-                                                        <span class="count">38석</span>
-                                                        <div class="sreader">종료시간 14:44</div>
-                                                        <span class="sreader mod"></span>
-                                                    </a>
-                                                </li>
-                                                <!--한 타임 끝-->
-                                                <li data-index="1" data-remain_seat="140" 
-                                                play_start_tm="1500" play_num="3" class="selected">
-                                                <a class="button" href="#"
-                                                onclick="screenTimeClickListener(event);
-                                                return false;" title="">
-                                                    <span class="time">
-                                                        <span>15:00</span>
-                                                    </span>
-                                                    <span class="count">125석</span>
-                                                    <div class="sreader">종료시간 17:09</div>
-                                                    <span class="sreader mod"></span>
-                                                </a></li>
-                                                <li data-index="2" data-remain_seat="140"
-                                                play_start_tm="2000"
-                                                play_num="5">
-                                                <a class="button" href="#"
-                                                onclick="screenTimeClickListener(event);
-                                                return false;" title="">
-                                                    <span class="time">
-                                                        <span>20:00</span>
-                                                    </span>
-                                                    <span class="count">134석</span>
-                                                    <div class="sreader">종료시간 22:09</div>
-                                                    <span class="sreader mod"></span>
-                                                </a></li>
-                                                <li data-index="3" data-remain_seat="140"
-                                                play_start_tm="2225" play_num="6">
-                                                <a class="button" href="#"
-                                                onclick="screenTimeClickListener(event);
-                                                return false;" title="">
-                                                    <span class="time">
-                                                        <span>22:25</span>
-                                                    </span>
-                                                    <span class="count">136석</span>
-                                                    <div class="sreader">종료시간 24:34</div>
-                                                    <span class="sreader mod"></span>
-                                                </a></li>
-                                            </ul>
-                                        </div>
-                                        <!--한 극장 끝-->
-                                        <div class="theater" screen_cd="004"
-                                        movie_cd="20033341" style="border: none;">
-                                            <span class="title">
-                                                <span class="name">2D</span>
-                                                <span class="floor">4관 4층</span>
-                                                <span class="seatcount">(총127석)</span>
-                                            </span>
-                                            <ul>
-                                                <li data-index="4" data-remain_seat="127"
-                                                play_start_tm="0900" 
-                                                play_num="1" class="morning">
-                                                <a class="button" href="#"
-                                                onclick="screenTimeClickListener(event);
-                                                return false;" title="">
-                                                    <span class="time">
-                                                        <span>09:00</span>
-                                                    </span>
-                                                    <span class="count">123석</span>
-                                                    <div class="sreader">종료시간 11:09</div>
-                                                    <span class="sreader mod"> 조조</span>
-                                                </a></li>
-                                            </ul>
-                                        </div>
-                                         --%>
-									</div>
+									<div class="content scroll-y" tabindex="-1"></div>
 									<div class="pane pane-y"
 										style="display: none; opacity: 1; visibility: visible;">
 										<div class="slider slider-y" style="height: 50px;"></div>
@@ -788,7 +666,10 @@
 	                                            
 	                                            
 	                                            function numberofpeople2(list){
-	                                                
+	                                            	//좌석리스트 초기화
+	                                            	$(".info .seat_no .data").html("");
+	                                            	$("input[name=seatlist]").val("");
+	                                            	
 	                                                //죄석 selected 클래스 제거
 	                                                $("#seats_list .row .seat").removeClass("selected")
 	                                                let fseleted = $(list).siblings(".selected");
@@ -1270,7 +1151,7 @@
 					<script>
                 //step4세팅
            	     function complement(result){
-           	    	alert("rvcode : " + result.rvcode) 
+           	    	//alert("rvcode : " + result.rvcode) 
                 	// tnb에 display none;
            	    	 $(".tnb").css("display", "none");
            	    	 
@@ -1293,8 +1174,8 @@
            	     }
                 
                 function confirmCancelTicketResult(){
-                	let userid = $("input[name=movcode]").val();
-                	location.href = "/member/reserv?userid="+userid;
+                	let userid =  $("input[name=userid]").val();
+                	location.href = "/member/reserve?userid="+userid;
                 }
                 </script>
 					<!-- step4 끝 ------------------- -->
@@ -1525,9 +1406,9 @@
 	    	// 영화이름, 가격, id
 	    	 let t_movname = $(".movie_title span a").html();
 	         let t_amount = $(".payment-ticket .payment-final .price").html();
-	         let t_name= $("input[name=userid]").val().trimStart();
-	         alert("확인!!!!!!!!!!!!!!",t_name);
-	         alert("확인!!!!!!!!!!!!!!2"+t_name);
+	         let t_name= $("input[name=userid]").val();
+	         //alert("확인!!!!!!!!!!!!!!",t_name);
+	         //alert("확인!!!!!!!!!!!!!!2"+t_name);
 	         
 	         // 영화 코드, 영화관 코드, 영화 상영시간(20230000), 영화관(4), 선택좌석리스트
 	         let schmovcode = $("input[name=movcode]").val();
@@ -1592,7 +1473,7 @@
 			    // 영화이름, 가격, id
 	    	 let t_movname = $(".movie_title span a").html();
 	         let t_amount = $(".payment-ticket .payment-final .price").html();
-	         let t_name= $("input[name=userid]").val().trimStart();
+	         let t_name= $("input[name=userid]").val();
 	         
 	         // 영화 코드, 영화관 코드, 영화 상영시간(20230000), 영화관(4), 선택좌석리스트
 	         let schmovcode = $("input[name=movcode]").val();
@@ -1612,14 +1493,14 @@
 	         
 	         // 영화관 이름
 	         let schthname = $(".theater .name .data a").html();
-	         let t_merchant_uid = schmovcode+schtime.substring(0,10).replace(/-/gi, "")+
-	         					schall.substring(1,2)+schseats.replace(/,/gi, "").substring(0,4);
+	         let t_merchant_uid = schmovcode+schtime.substring(2,10).replace(/-/gi, "")
+	         						+new Date()+schseats.replace(/,/gi, "").substring(0,4);
 	         //------------------------------------------------------
 	            IMP.request_pay({
 	                pg : 'html5_inicis', // version 1.1.0부터 지원.
 	                pay_method : 'card',
 	                merchant_uid : t_merchant_uid,
-	                name : t_thname,
+	                name : t_movname,
 	                amount : t_amount, //판매 가격
 	                buyer_name : t_name
 	            }, function(rsp) {
@@ -1653,7 +1534,7 @@
 				       			},
 		        			    dataType:"json",
 			       				success : function(result){
-			       					alert("성공");
+			       					alert("결제가 완료되었습니다.");
 			       					complement(result);
 			       				},
 			       				error : function(){
@@ -1665,7 +1546,7 @@
 	                    msg += '에러내용 : ' + rsp.error_msg;
 	                    location.reload();
 	                }
-	                alert(msg);
+	                //alert(msg);
 	            });
 	        }
 	     
@@ -1674,7 +1555,7 @@
 		    // 영화이름, 가격, id
 	    	 let t_movname = $(".movie_title span a").html();
 	         let t_amount = $(".payment-ticket .payment-final .price").html();
-	         let t_name= $("input[name=userid]").val().trimStart();
+	         let t_name= $("input[name=userid]").val();
 	         
 	         // 영화 코드, 영화관 코드, 영화 상영시간(20230000), 영화관(4), 선택좌석리스트
 	         let schmovcode = $("input[name=movcode]").val();
@@ -1694,8 +1575,10 @@
 	         
 	         // 영화관 이름
 	         let schthname = $(".theater .name .data a").html();
-	         let t_merchant_uid = schmovcode+schtime.substring(0,10).replace(/-/gi, "")+
-	         					schall.substring(1,2)+schseats.replace(/,/gi, "").substring(0,4);
+	         let now = new Date();
+	         let t_merchant_uid = schmovcode+schtime.substring(2,10).replace(/-/gi, "")
+									+now.getMinutes()+now.getSeconds()+schseats.replace(/,/gi, "").substring(0,4);
+	         
 	         //------------------------------------------------------
 	         
 	            IMP.request_pay({// param
@@ -1736,7 +1619,7 @@
 				       			},
 		        			    dataType:"json",
 			       				success : function(result){
-			       					alert("성공");
+			       					alert("결제가 완료되었습니다.");
 			       					complement(result);
 			       				},
 			       				error : function(){

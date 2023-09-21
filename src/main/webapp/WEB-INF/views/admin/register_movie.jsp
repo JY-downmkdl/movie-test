@@ -7,59 +7,96 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화 등록하기</title>
+<link rel="stylesheet" href="/resources/css/bootstrap.css">
+    <style>
+    	.movinsert .form-control{
+    		display:inline;
+    		width: 10%;
+    	}
+    	.movinsert p {
+        	padding-left: 10px;
+    	}
+        .movinsert span{
+       		color: #666;
+       		font-size:12px;
+       	}
+        td:not(:first-child).py-3 {
+            text-align: start;
+        }
+
+        .buttons{
+            text-align: center;
+        }
+        
+    </style>
 </head>
 <body>
-	<h2>영화 등록하기</h2>
-	<form action="/admin/register_movie" method="post" class="mr">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<table>
-			<tr>
-				<td>영화 이름</td>
-				<td> <input name="movname"> </td>
-			</tr>
-			<tr>
-				<td>감독</td>
-				<td> <input name="movdirector"> </td>
-			</tr>
-			<tr>
-				<td>장르</td>
-				<td> <input name="movgenre"> </td>
-			</tr>
-			<tr>
-				<td>등급</td>
-				<td>
-					<select id="movgrade" name="movgrade">
-	                   <option selected="" value="0">전체</option>
-	                   <option value="7">7세</option>
-	                   <option value="12">12세</option>
-	                   <option value="15">15세</option>
-	                   <option value="19">19세</option>
-	               </select>
-				</td>
-			</tr>
-			<tr>
-				<td>러닝타임</td>
-				<td> <input type="text" name="movrunningtime"> 분 </td>
-			</tr>
-			<tr>
-				<td>상영일</td>
-				<td> <input type="date" name="movrelease"> </td>
-			</tr>
-			<tr>
-				<td>포스터</td>
-				<td>
-					<div class="uploadDiv">
-					 	<input type="file" name="movposter">
+<%@ include file="../header.jsp" %>
+ <div id="contaniner" class="">
+        <div id="contents" class="">
+            <div class="contentsStart">
+                <div class="tit-heading-wrap">
+                    <h3>영화 등록하기</h3>
+                </div>
+            </div>
+            <div class="movinsert mx-auto">
+	            <form action="/admin/register_movie" method="post" class="mr">
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+					<table>
+						<tr>
+							<td class="py-3">영화 이름</td>
+							<td class="py-3"> <input name="movname"> </td>
+						</tr>
+						<tr>
+							<td class="py-3">감독</td>
+							<td class="py-3"> <input name="movdirector"> </td>
+						</tr>
+						<tr>
+							<td class="py-3">장르</td>
+							<td class="py-3"> <input name="movgenre"> </td>
+						</tr>
+						<tr>
+							<td class="py-3">등급</td>
+							<td class="py-3">
+								<select id="movgrade" name="movgrade">
+				                   <option selected="" value="0">전체</option>
+				                   <option value="7">7세</option>
+				                   <option value="12">12세</option>
+				                   <option value="15">15세</option>
+				                   <option value="19">19세</option>
+				               </select>
+							</td>
+						</tr>
+						<tr>
+							<td class="py-3">러닝타임</td>
+							<td class="py-3"> <input type="text" name="movrunningtime"> 분 </td>
+						</tr>
+						<tr>
+							<td class="py-3">상영일</td>
+							<td class="py-3"><input type="date" name="movrelease"></td>
+						</tr>
+						<tr>
+							<td class="py-3">포스터</td>
+							<td class="py-3">
+								<div class="uploadDiv">
+								 	<input type="file" name="movposter">
+								</div>
+								<div class="uploadResult">
+									<ul></ul>
+								</div>
+							</td>
+						</tr>
+					</table>
+					<div class="buttons">
+						<button type="submit" class="btn btn-primary">등록하기</button>
+						<button type="button" class="btn btn-secondary" onclick="location.href='/admin/moviechart'">취소</button>
 					</div>
-					<div class="uploadResult">
-						<ul></ul>
-					</div>
-				</td>
-			</tr>
-		</table>
-		<button type="submit">등록하기</button>
-	</form>
+				</form>
+            </div>
+            
+        </div>
+ </div>
 
 <script type="text/javascript">
 	$(document).ready(function(){

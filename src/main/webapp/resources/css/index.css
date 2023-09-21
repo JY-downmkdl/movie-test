@@ -9,25 +9,29 @@
     height: 500px;
     position: relative;
     background-color:#000;
+    margin-top: 50px;
 }
  
 #container .contents{
-    height: 100%;
-}
-
-video {
-    position: relative;
-    width: 80%;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 
 .video_wrap{
     background-color: black;
     color: #fff;
     position: relative;
-    top: 10%;
+    top: 0;
     left: 0;
+    width: 980px;
+    height: 500px;
 }
+video {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    height: 500px;
+}
+
 
 /*----------------------span 들....*/
 .movieinfo{
@@ -68,4 +72,129 @@ video {
     background-color: rgba(255, 255, 255, 0.8) ;
     color: #333;
     border-radius: 15px;
+}
+
+/*무비차ㅡ*/
+.movieChartBeScreen_btn_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.movieChartBeScreen_btn_wrap .tabBtn_wrap {
+    display: inline-flex;
+}
+.movieChartBeScreen_btn_wrap .tabBtn_wrap h3 {
+    height: auto;
+    margin: 0;
+    font-size: 32px;
+}
+.movieChartBeScreen_btn_wrap .tabBtn_wrap h3 a.active {
+    font-weight: 700;
+    color: #222;
+}
+.movieChartBeScreen_btn_wrap .btn_allView {
+    padding: 4px 15px;
+    font-size: 14px;
+    color: #222;
+    line-height: 1.429em;
+    /* background: transparent url(./../images/common/ico/arrowR_8x13.png) calc(100% - 7px) center/8px 13px scroll no-repeat; */
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.05);
+}
+
+
+/* 인덱스 > 스와이퍼 */
+
+/*html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}*/
+
+.swiper-on{
+    display: block;
+    width: 100%;
+    height: 300px;
+    margin: 0 auto;
+}
+
+.swiper {
+  width: 980px;
+  height: 300px;
+  margin: 20px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.swiper-wrapper{
+    counter-reset: number 0;
+    position: relative;
+}
+
+.swiper-slide::after{
+    content: counter(number);
+    counter-increment: number 1;
+    position: absolute;
+    width: 50px;
+    bottom: 50px;
+    right: 80%;
+    z-index: 33;
+    color: #fff;
+    font-size: 40px;
+    font-style: italic;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.swiper-slide p {
+	padding-top: 5px;
+    height: 100px;
+}
+
+
+.append-buttons {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.append-buttons button {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #007aff;
+  color: #007aff;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin: 0 10px;
+  font-size: 13px;
+}
+
+.swiper i {
+	font-size : 40px;
 }

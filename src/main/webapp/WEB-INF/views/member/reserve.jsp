@@ -7,6 +7,7 @@
 <title>마이페이지</title>
 </head>
 <body>
+<%@ include file="../header.jsp" %>
 <%@ include file="./myheader.jsp" %>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 <input type="hidden" name="userid" value="﻿<sec:authentication property='principal.username'/>" />
@@ -15,7 +16,6 @@
 		let userid = $("input[name=userid]").val().trimStart();
 		$("input[name=userid]").val(userid);
 		
-		$(".snb ul li:first-child a").attr("href", "/member/mypage?userid="+userid);
 	})
 </script>
        
@@ -24,16 +24,16 @@
                <div class="snb">
                    <ul>
                        <li>
-                           <a href="/member/mypage">MY CGV HOME <i></i></a>
+                           	<a href='#' onclick="goMypage()">MY CGV HOME <i></i></a>
                        </li>
                        <li class="on">
-                           <a href='#' title="현재 선택">나의 예매내역</a>
+                           <a href='/member/reserve?userid=<sec:authentication property="principal.username"/>' title="현재 선택">나의 예매내역</a>
                        </li>
                        <li>
-                           <a href="/member/myinfo">회원정보<i></i></a>
+                           <a href='/member/myinfo?userid=<sec:authentication property="principal.username"/>'>회원정보<i></i></a>
                            <ul>
                                 <li>
-                                   <a href="/member/myinfo">개인정보 변경</a>
+                                   <a href='/member/myinfo?userid=<sec:authentication property="principal.username"/>'>개인정보 변경</a>
                                </li>
                                <li>
                                    <a href="#">회원탈퇴</a>
@@ -78,6 +78,8 @@
 			                                <div class="box-number">
 			                                    <em>예매번호</em>
 			                                    <strong>${rv.rvcode}</strong>
+			                                    <input type="hidden" name="movcode" value="${rv.rvmovcode}">
+			                                    <input type="hidden" name="thcode" value="${rv.rvthcode}">
 			                                </div>
 			                                <div class="box-info">
 			                                    <div class="box-image">
@@ -112,19 +114,19 @@
 			                                                <li>
 			                                                    <dl>
 			                                                        <dt>관람일시</dt>
-			                                                        <dd class="txt-red">${rv.rvschtime}</dd>
+			                                                        <dd class="myrvschtime txt-red">${rv.rvschtime}</dd>
 			                                                    </dl>
 			                                                </li>
 			                                                <li>
 			                                                    <dl>
 			                                                        <dt>관람좌석</dt>
-			                                                        <dd>${rv.rvschseats}</dd>
+			                                                        <dd class="myrvschseats">${rv.rvschseats}</dd>
 			                                                    </dl>
 			                                                </li>
 			                                                <li>
 			                                                    <dl>
 			                                                        <dt>상영관</dt>
-			                                                        <dd>${rv.rvschall}</dd>
+			                                                        <dd class="myrvschall">${rv.rvschall}</dd>
 			                                                    </dl>
 			                                                </li>
 			                                                <li>
@@ -144,13 +146,48 @@
 			                                        <button type="button" class="round inblack hometicket">
 			                                            <span>예매정보 출력</span>
 			                                        </button>
-			                                        <button type="button" data-status="94" onclick="noshowYN('Y', '20230918', '00', '02', '10359.91575519', '', '' )"
+			                                        <button type="button" data-status="94" onclick="CancelReservation(this)"
 			                                        class="round black cancel">
 			                                            <span>예매취소</span>
 			                                        </button>
 			                                    </div>
 			                                </div>
-			
+											<script>
+												function CancelReservation(html) {
+													const userid = $("input[name=userid]").val();
+													const rvcode = $(html).closest(".lst-item").find(".box-number strong").html();
+													
+													const rvmovcode = $(html).closest(".lst-item").find("input[name=movcode]").val();
+													const rvthcode = $(html).closest(".lst-item").find("input[name=thcode]").val();
+													
+													const rvschall = $(html).closest(".lst-item").find(".myrvschall").html();
+													const rvschtime = $(html).closest(".lst-item").find(".myrvschtime").html().substring(0,10);
+													const rvschseats = $(html).closest(".lst-item").find(".myrvschseats").html();
+													
+													//alert(rvmovcode+"/"+rvthcode+"/"+rvschtime+"/"+rvschseats);
+													
+													$.ajax({
+	                                    				url: '/member/cancel',
+	                                    				data: {rvcode: rvcode, rvmovcode:rvmovcode, rvthcode:rvthcode,
+	                                    					rvschall:rvschall, rvschtime:rvschtime, rvschseats:rvschseats},
+	                                    				type: 'GET',
+	                                    				dataType: 'json',
+	                                    				success: function(result){
+	                                    					//alert("결과좀 알려줄래" + result)
+	                                    					if(result == 1){
+		                                    					//console.log("영화 클릭 ajax 결과 : " +result);
+		                                    					location.reload();
+	                                    					}
+	                                    					else{
+	                                    						alert("잠시후 다시 시도해주세요");
+	                                    					}
+	                                    				},
+	                                    				error : function(){
+	                                    					alert("서버요청실패");
+	                                    				}
+													})
+												}
+											</script>
 			                            </div>
 			                        </div>
 	                         </c:forEach>			              
@@ -324,8 +361,6 @@
                             <input type="hidden" name="theater_code" id="theater_code">
                         </form>
            </div>
-                    
-                    
             </div> <!-- cols contensts 끝 -->
 		</div> <!-- #contents 끝-->
 	</div> <!-- contaniner 끝 -->

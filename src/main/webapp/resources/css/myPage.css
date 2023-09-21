@@ -109,11 +109,11 @@ div[class^="sect-"] {
 .cols-content .col-aside .snb > ul > li:first-child {
     border-top: 1px solid #fff;
 }
-.cols-content .col-aside .snb > ul > li.on > a {
+.cols-content .col-aside .snb > ul > li.on > a, .cols-content .col-aside .snb > ul > li.on form a{
     background-color: #fb4357;
     color: #fdfcf0;
 }
-.cols-content .col-aside .snb > ul > li > a {
+.cols-content .col-aside .snb > ul > li a {
     width: 155px;
     height: 34px;
     padding-left: 10px;

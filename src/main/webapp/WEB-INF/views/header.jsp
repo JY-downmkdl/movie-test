@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +18,10 @@
 <link rel="stylesheet" href="/resources/css/ticket.css">
 <link rel="stylesheet" href="/resources/css/myPage.css">
 <link rel="stylesheet" href="/resources/css/detailMovie.css">
+
+<link rel="stylesheet" href="/resources/swiper/swiper.css"  href="style.css?ver=1.3"> 
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -86,15 +90,30 @@
     <div class="nav">
         <div class="contents">
             <ul class="nav_menu">
-                <li>
-                    <h2><a href="/movies/moviechart">영화</a></h2>
-                    <dl class="nav_overMenu">
-                        <dt><a href="/movies/moviechart">영화</a></dt>
-                        <dd></dd>
-                        <dd></dd>
-                        <dd></dd>
-                    </dl>
-                </li>
+            	<sec:authorize access="hasRole('ROLE_ADMIN')">
+            		<li>
+	                    <h2><a href="/admin/moviechart">영화</a></h2>
+	                    <dl class="nav_overMenu">
+	                        <dt><a href="/movies/moviechart">영화</a></dt>
+	                        <dd></dd>
+	                        <dd></dd>
+	                        <dd></dd>
+	                    </dl>
+	                </li>
+            	</sec:authorize>
+            	
+            	 <sec:authorize access="!hasRole('ROLE_ADMIN')">
+            		<li>
+	                    <h2><a href="/movies/moviechart">영화</a></h2>
+	                    <dl class="nav_overMenu">
+	                        <dt><a href="/movies/moviechart">영화</a></dt>
+	                        <dd></dd>
+	                        <dd></dd>
+	                        <dd></dd>
+	                    </dl>
+	                </li>
+            	</sec:authorize>
+                
                 <li>
                     <h2><a href="/theaters/location?thname=울산">극장</a></h2>
                     <dl class="nav_overMenu">
@@ -104,15 +123,28 @@
                         <dd></dd>
                     </dl>
                 </li>
-                <li>
-                    <h2><a href="/tickets/ticket">예매</a></h2>
-                    <dl class="nav_overMenu">
-                        <dt><a href="/tickets/ticket">예매</a></dt>
-                        <dd></dd>
-                        <dd></dd>
-                        <dd></dd>
-                    </dl>
-                </li>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+	                <li>
+	                    <h2><a href="/admin/tickets">예매내역</a></h2>
+	                    <dl class="nav_overMenu">
+	                        <dt><a href="/admin/tickets">예매내역</a></dt>
+	                        <dd></dd>
+	                        <dd></dd>
+	                        <dd></dd>
+	                    </dl>
+	                </li>
+                </sec:authorize>
+               <sec:authorize access="!hasRole('ROLE_ADMIN')">
+	                <li>
+	                    <h2><a href="/tickets/ticket">예매</a></h2>
+	                    <dl class="nav_overMenu">
+	                        <dt><a href="/tickets/ticket">예매</a></dt>
+	                        <dd></dd>
+	                        <dd></dd>
+	                        <dd></dd>
+	                    </dl>
+	                </li>
+                </sec:authorize>
                 <div class="totalSearch_wrap">
                 	<form method="get" action="/search/all" class="searchform" style="border-left: 1px solid #ddd; padding-left: 5px;">
 	                    <input type="text" name="keyword">

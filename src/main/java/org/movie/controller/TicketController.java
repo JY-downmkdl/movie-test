@@ -82,7 +82,7 @@ public class TicketController {
 			@RequestParam("thcode")String schthcode, @RequestParam("schtime")String schtime){
 		log.info(schmovcode+", "+schthcode+","+schtime+"날짜까지 선택했어");
 		List<SchedulesDTO> list = new ArrayList<SchedulesDTO>();
-		list.addAll(schservice.readbytimes(schmovcode, schthcode, schtime));
+		list.addAll(schservice.readbytimes(schmovcode, schthcode, schtime, ""));
 		return new ResponseEntity<List<SchedulesDTO>>(list, HttpStatus.OK);
 	}
 	

@@ -49,6 +49,9 @@
 	</resultMap>
 	<select id="selectReserv" resultMap="rvMap">
 		select rv.*, mov.* from reservation rv left outer join movies mov on rv.rvmovcode = mov.movcode
-		where rvuserid = #{userid} and TO_CHAR(rvschtime) >= TO_CHAR(ADD_MONTHS(sysdate, -1), 'yyyy-mm-dd')
+		where rvuserid like '%'|| #{userid} ||'%' and TO_CHAR(rvschtime) >= TO_CHAR(ADD_MONTHS(sysdate, -1), 'yyyy-mm-dd')
 	</select>
+	<delete id="cancelrv">
+		delete reservation where rvcode = #{rvcode}
+	</delete>
 </mapper>

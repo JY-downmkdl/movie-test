@@ -39,6 +39,11 @@ public class ReservationServiceImpl implements ReservationService{
 	public List<ReservationDTO> reserv(String id) {
 		return mapper.selectReserv(id);
 	}
+
+	@Override
+	public boolean cancelrv(String rvcode) {
+		return mapper.cancelrv(rvcode) == 1;
+	}
 	
 	
 }

@@ -128,6 +128,8 @@
         	
        	}
         //영화관 별 상영 시간푠
+        
+        // 특정 영화관 스케줄 받아오기
         function revealthloc(thcode, thname, thaddress){
         	$(".theater-schedules ol").html("");
 			//결과 배열이 result이거나 길이가 0이면 함수종료 
@@ -136,7 +138,6 @@
 			let schthname = thname;
 			let schthcode= thcode;
 			let schaddress = thaddress;
-			alert(schaddress +schthname+ schthcode+"!!!!!!!!!!!!!!!!");
 			
 			////$(".theater-location-h1").html(str2);
 			let thinfo = ""
@@ -157,31 +158,7 @@
 					// 각 movcode 개수 구하기
 					console.log(result);
 					
-					let str1=""
-					let str2=""
-					<%--
-					for(let i=0; i< result.length; i++){
-						if(result[i] == result[result.length-1]){
-							console.log("마지막",result[result.length-1].schtime);
-							str1 += "<div>"+result[i].schall+"<span>"+result[i].schtime.substring(11,16)+"</span></div>";
-							str2+="<li><p>"+result[i].movname+"</p>"
-							str2+=str1+"</li>";
-							console.log(result[i].movname+ result[i].schtime)
-							$(".theater-schedules ol").append(str2);
-							return;
-						}
-						str1 += "<div>"+result[i].schall+"<span>"+result[i].schtime.substring(11,16)+"</span></div>";
-						console.log(str1);
-						if(result[i].movname != result[i+1].movname){
-							str2+="<li><p>"+result[i].movname+"</p>"
-							str2+=str1+"</li>";
-							console.log(result[i].movname+ result[i].schtime)
-							$(".theater-schedules ol").append(str2);
-							str2="";
-							str1="";
-							
-						}			
-					} --%>
+					// 상영중인 날짜만 dimmed 제거
 					for(let j=0; j<listitems.length; j++){
    						console.log("j가 뭔데 : " + j)
    						let dateli = $(".date-list ul li.day:eq("+j+")");
@@ -189,15 +166,71 @@
    						for(let i=0; i<result.length; i++){
    							let text = result[i].schtime.substring(0,10);
        						if(date == text){
-               					console.log("akfwha",date);
                					dateli.removeClass("dimmed");
                					console.log(dateli);
        						}
    						}
    					}
 					
-					let firstday = result[0].schtime.substring(0,10);
-					viewfirst(schthcode,firstday);
+					let firstday = $(".date-list ul li:not(.dimmed)").eq(0).data("date").substring(0,10)  ;
+					
+					// 스케쥴 나타내기-----------------
+					let str_all = "";					
+					
+					// 영화 정보 관련
+					let str1="<li><div class='col-times'><div class='info-movie'>";
+					let str_m = "";
+							
+					// 상영 스케쥴 관련
+					let str_h = "";
+					
+					let result_h = result.filter(h =>
+                        h.schtime.substring(0,10) == firstday);
+                    console.log("rh : ", result_h);
+                    
+					
+					for(let i=0; i< result_h.length; i++){
+						str_h += "<li>"+result_h[i].schtime.substring(11,16)+
+						"<span>"+result_h[i].seatcount+" 석</span></li>";
+						
+						//만약 마지막이라면
+						if(result_h[i] == result_h[result_h.length-1]){
+							//alert("str" + str_h);
+							str_m = str1 +
+							"<i class='cgvIcon etc age"+result_h[i].movList[0].movgrade+"'>"+
+							result_h[i].movList[0].movgrade+"</i>"+
+							"<a href='/movies/detail-view?movcode="+result_h[i].movList[0].movcode+"'>"+
+							result_h[i].movList[0].movname+"</a>"+
+							"<span>"+result_h[i].movList[0].movgenre+"/ "+
+							result_h[i].movList[0].movrunningtime+"/ "+
+							result_h[i].movList[0].movrelease+"</span></div>"+
+							"<div class='type-hall'><div class='info-hall'><p>"+
+							result_h[i].schall+" | <span> 총 110 석</span></p></div>"+
+							"<div class='info-timetable'><ul>"+str_h+"</ul></div></div></div></li>";
+							
+							str_all += str_m;
+							$(".sect-showtimes ul").html(str_all);
+							return;
+						}
+
+						if(result_h[i].movList[0].movname != result_h[i+1].movList[0].movname){
+							//alert("str" + str_h);
+							str_m = str1 +
+							"<i class='cgvIcon etc age"+result_h[i].movList[0].movgrade+"'>"+
+							result_h[i].movList[0].movgrade+"</i>"+
+							"<a href='/movies/detail-view?movcode="+result_h[i].movList[0].movcode+"'>"+
+							result_h[i].movList[0].movname+"</a>"+
+							"<span>"+result_h[i].movList[0].movgenre+"/ "+
+							result_h[i].movList[0].movrunningtime+"/ "+
+							result_h[i].movList[0].movrelease+"</span></div>"+
+							"<div class='type-hall'><div class='info-hall'><p>"+
+							result_h[i].schall+" | <span> 총 110 석</span></p></div>"+
+							"<div class='info-timetable'><ul>"+str_h+"</ul></div></div></div></li>";
+							
+							str_all += str_m;
+							str_h="";
+						}
+					}
 					
 				},
 				error : function(){
@@ -205,50 +238,79 @@
 				}
 			})
 		}
-        
-     	 //영화관 선택시 사용할 함수
-		function viewfirst(schthcode, schtime) {
-     		 let thcode = schthcode;
-     		 let firstday= schtime;
-     		 alert(thcode +"?"+ firstday);
-	    	//상영관 정보 나오게
-	    		$.ajax({
-	   				url: '/tickets/readbytimes',
-	   				data: {movcode: '', thcode:thcode, schtime:firstday},
-	   				type: 'GET',
-	   				dataType: 'json',
-	   				success: function(result){
-	   					console.log("상영관 정보" , result);
-	   					if(result.length >0){
-	   						for(let i=0; i<result.length; i++){
-	   							
-	   						}
-	   					}
-	   					else return;
-	   				},
-					error : function(){
-						alert("서버요청실패");
-					}
-	   			})
-		}
-			
-     	 //선택할 수 잇는 날짜 중 하나 아무거나 클릭 햇다면
+
+        //선택할 수 잇는 날짜 중 하나 아무거나 클릭 햇다면
 		function dateClickListener(dateLi) {
-			let thcode = $("input[name='thcode']").val();
+			let schthcode = $("input[name='thcode']").val();
 			let schtime = $(dateLi).parent().data("date").substring(0,10);
-    		alert(thcode +"?"+ schtime);
-    	//상영관 정보 나오게
-    		$.ajax({
-   				url: '/tickets/readbytimes',
-   				data: {movcode: '', thcode:thcode, schtime:schtime},
-   				type: 'GET',
-   				dataType: 'json',
-   				success: function(result){
-   					console.log("상영관 정보" , result);
-   					if(result.length >0){
-       					//showmovth(result);
-   					}
-   					else return;
+    		
+   			//상영관 정보 나오게
+			$.ajax({
+				url : "/schedules/readbythcode",
+				type : "GET",
+				data : {schthcode: schthcode},
+ 			    dataType:"json",
+				success : function(result){
+					console.log(result);
+					let str_all = "";					
+					
+					// 영화 정보 관련
+					let str1="<li><div class='col-times'><div class='info-movie'>";
+					let str_m = "";
+							
+					// 상영 스케쥴 관련
+					let str_h = "";
+					
+					let result_h = result.filter(h =>
+                        h.schtime.substring(0,10) == schtime);
+                    console.log("rh : ", result_h);
+                    
+					
+					for(let i=0; i< result_h.length; i++){
+						str_h += "<li>"+result_h[i].schtime.substring(11,16)+
+						"<span>"+result_h[i].seatcount+" 석</span></li>";
+						
+					
+						//만약 마지막이라면
+						if(result_h[i] == result_h[result_h.length-1]){
+							//alert("str" + str_h);
+							str_m = str1 +
+							"<i class='cgvIcon etc age"+result_h[i].movList[0].movgrade+"'>"+
+							result_h[i].movList[0].movgrade+"</i>"+
+							"<a href='/movies/detail-view?movcode="+result_h[i].movList[0].movcode+"'>"+
+							result_h[i].movList[0].movname+"</a>"+
+							"<span>"+result_h[i].movList[0].movgenre+"/ "+
+							result_h[i].movList[0].movrunningtime+"/ "+
+							result_h[i].movList[0].movrelease+"</span></div>"+
+							"<div class='type-hall'><div class='info-hall'><p>"+
+							result_h[i].schall+" | <span> 총 110 석</span></p></div>"+
+							"<div class='info-timetable'><ul>"+str_h+"</ul></div></div></div></li>";
+							
+							str_all += str_m;
+							$(".sect-showtimes ul").html(str_all);
+							
+							return;
+						}
+
+						if(result_h[i].movList[0].movname != result_h[i+1].movList[0].movname){
+							//alert("str" + str_h);
+							str_m = str1 +
+							"<i class='cgvIcon etc age"+result_h[i].movList[0].movgrade+"'>"+
+							result_h[i].movList[0].movgrade+"</i>"+
+							"<a href='/movies/detail-view?movcode="+result_h[i].movList[0].movcode+"'>"+
+							result_h[i].movList[0].movname+"</a>"+
+							"<span>"+result_h[i].movList[0].movgenre+"/ "+
+							result_h[i].movList[0].movrunningtime+"/ "+
+							result_h[i].movList[0].movrelease+"</span></div>"+
+							"<div class='type-hall'><div class='info-hall'><p>"+
+							result_h[i].schall+" | <span> 총 110 석</span></p></div>"+
+							"<div class='info-timetable'><ul>"+str_h+"</ul></div></div></div></li>";
+							
+							str_all += str_m;
+							str_h="";
+						}
+					}
+					
    				},
 				error : function(){
 					alert("서버요청실패");

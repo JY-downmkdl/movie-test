@@ -64,19 +64,21 @@
 			                <dd class="on"><c:out value="${board.movrelease.substring(0,10)}"/></dd>
 			            </dl>
 			        </div>
-			        <span class="like">
-			            <a class="link-reservation" href="/tickets/ticket">예매하기</a> 
-			        </span>
+			        <sec:authorize access="!hasRole('ROLE_ADMIN')">
+				        <span class="like">
+				            <a class="link-reservation" href="/tickets/ticket">예매하기</a> 
+				        </span>
+			        </sec:authorize>
+					<!-- 어드민일경우 수정가능 -->
+			         <sec:authentication property="principal" var="principal" />
+			         <sec:authorize access="hasRole('ROLE_ADMIN')">
+			           		<span class="like">
+						            <a class="link-reservation" href="/admin/modify_movie?movcode=${board.movcode}">수정하기</a> 
+					        </span>
+					</sec:authorize>
+			         <!-- 어드민일경우 수정가능 끝-->
 			    </div>	
 			</div>
-		<!-- 어드민일경우 수정가능 -->
-         <sec:authentication property="principal" var="principal" />
-         <sec:authorize access="hasRole('ROLE_ADMIN')">
-           <div>
-                <button onclick="location.href='/admin/modify_movie?movcode=${board.movcode}'">수정하기</button>
-           </div>       
-		</sec:authorize>
-         <!-- 어드민일경우 수정가능 끝-->
 	</div>
 </div>
 

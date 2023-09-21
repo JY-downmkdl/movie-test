@@ -7,7 +7,6 @@
 <title>마이페이지</title>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 <input type="hidden" name="userid" value="﻿<sec:authentication property='principal.username'/>" />
 <script type="text/javascript">
@@ -33,7 +32,7 @@
 			     		<div class="person-info">
 			     			<strong>님</strong>
 			     			<em><sec:authentication property="principal.username"/></em>
-			     			<button id="go_edit_page" type="button" title="새창열림">나의 정보 변경</button>
+			     			<a href='/member/myinfo?userid=<sec:authentication property="principal.username"/>'>나의 정보 변경<i></i></a>
 			     		</div>
 	                    <div class="sect-my-info">
 		                       <div class="col-my-ticket"><a href='/member/reserve?userid=<sec:authentication property='principal.username'/>'>

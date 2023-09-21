@@ -3,6 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri= "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="./header.jsp" %>
 <body>
 <!-- 검색 컨텐츠 시작-->
@@ -86,7 +87,7 @@
                         <c:choose>
                         	<c:when test="${not empty thresult}">
                         		<c:forEach items="${thresult}" var="thList">
-                            		<h3>${thList.thname} <span>${thList.thaddress}</span></h3>
+                            		<h3><a href="/theaters/location?thname=${fn:substring(thList.thaddress,0,2)}">${thList.thname} <span>${thList.thaddress}</span></a></h3>
                             	</c:forEach>
                             </c:when>
                             <c:otherwise>

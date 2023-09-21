@@ -14,19 +14,23 @@
             <div class="tit-heading-wrap">
                 <h3>무비차트</h3>
                 <div class="submenu">
-                    <ul>
-                        <li class="on"><a href="/movies/" title="선택">무비차트</a></li>
-                        <li><a href="/movies/pre-movies.aspx">상영예정작</a></li>
-                        <!--<li><a href="/movies/?lt=3">CGV아트하우스</a></li>//-->
-                    </ul>
+		           <!-- 어드민일경우 등록가능 -->
+		           <sec:authentication property="principal" var="principal" />
+		           <sec:authorize access="hasRole('ROLE_ADMIN')">
+				           <div class="register-button">
+				                <a href="/admin/register_movie">등록하기</a>
+				           </div>       
+					</sec:authorize>
+		           <!-- 어드민일경우 등록가능 끝-->
                 </div>
             </div>
+            <!-- 
             <div class="sect-sorting">
                 <div class="nowshow">
-                           <input type="checkbox" id="chk_nowshow" title="현재 선택됨" checked="">
-               
+                   <input type="checkbox" id="chk_nowshow" title="현재 선택됨" checked="">
                    <label for="chk_nowshow">현재 상영작만 보기</label>                
                </div>
+               
                <label for="order_type" class="hidden">정렬</label>
                <select id="order_type" name="order-type">
                    <option title="현재 선택됨" selected="" value="1">예매율순</option>
@@ -34,17 +38,10 @@
                    <option value="3">관람객순</option>
                </select>
                <button type="button" class="round gray"><span>GO</span></button>
-           </div> 
-           <!-- 어드민일경우 등록가능 -->
-           <sec:authentication property="principal" var="principal" />
-           <sec:authorize access="hasRole('ROLE_ADMIN')">
-		           <div class="register-button">
-		                <a href="/admin/register_movie">등록하기</a>
-		           </div>       
-			</sec:authorize>
-           <!-- 어드민일경우 등록가능 끝-->
+           </div>
+			 -->
             <div class="sect-movie-chart">
-                <h4 class="hidden">
+               	<h4 class="hidden">
                     무비차트 - 예매율순
                 </h4>
                 <ol>
@@ -98,80 +95,29 @@
 	                                </strong>
 	                            </span>
 	                            <span class="like"> 
-	                                <a class="link-reservation" href="/tickets/ticket?movcode=${movlist.movcode}">예매</a>
+	                            	<sec:authorize access="hasRole('ROLE_ADMIN')">
+	                            		<c:choose>
+											<c:when test="${movlist.thstates eq 1}">
+			                            		<a class="link-reservation" href="/admin/thstateOFF?movcode=${movlist.movcode}">상영중지</a>
+											</c:when>
+											<c:otherwise>
+			                            		<a class="link-reservation" href="/admin/thstateON?movcode=${movlist.movcode}">상영/재개봉</a>
+											</c:otherwise>
+	                            		</c:choose>
+	                            	</sec:authorize>
+	                            	<sec:authorize access="!hasRole('ROLE_ADMIN')">
+		                                <a class="link-reservation" href="/tickets/ticket?movcode=${movlist.movcode}">예매</a>
+	                            	</sec:authorize>
 	                            </span>
 	                        </div>    
 	                    </li>
                 	
                 	</c:forEach>
                 </ol>
-                <button class="btn-more-fontbold">더보기 <i class="link-more">더보기</i></button>
             </div><!-- .sect-moviechart -->
         </div>
     </div>
 </div>
-
-<!--
-  2016-
-- Fried : 0 ~69
-- Good :  70 ~ 84
-- Great : 85 ~ 100  
-//-->
-<script id="temp_movie" type="text/x-jquery-tmpl">
-    <li>
-        <div class="box-image" >
-            <a href="/movies/detail-view/?midx=${MovieIdx}">
-                <span class="thumb-image">
-                    <img src="${PosterImage.LargeImage}" alt="${Title}" onerror="errorImage(this)"/>
-                    <!-- 영상물 등급 노출 변경 2022.08.24 -->
-                    <i class="cgvIcon etc age${MovieGrade.StyleClassName}">${MovieGrade.GradeText}</i>
-                    <!--<span class="ico-grade ${MovieGrade.StyleClassName}">${MovieGrade.GradeText}</span>-->
-                </span>
-            </a>
-            <span class="screentype">
-                {{each MovieKindList}}
-                <a class="${StyleClassName}" href="#" data-regioncode="${RegionCode}">${KindName}</a>
-                {{/each}}
-            </span>
-        </div>
-                    
-        <div class="box-contents">
-            <a href="/movies/detail-view/?midx=${MovieIdx}">
-                <strong class="title">${Title}</strong>
-            </a>
-
-            <div class="score">
-                <strong class="percent">예매율<span>${TicketRate}%</span></strong>
-                <!--2020.05.07 개봉일 12시 30분전 프리에그, 개봉일 12시 30분후 골든에그지수 노출 기준변경-->
-                <div class="egg-gage small">
-                    <span class="${StarPoint}"></span>
-                    <span class="percent">${EggPoint}</span>
-                </div>
-            </div>
-
-            <span class="txt-info">
-                <strong>
-                    ${OpenDate}
-                    <span>${OpenText}</span>
-                    {{if D_Day > 0}}
-                        <em class="dday">D-${D_Day}</em>
-                    {{/if}}
-                </strong>
-            </span>
-            <span class="like"> 
-                {{if (IsTicketing)}}<a class="link-reservation" href="http://www.cgv.co.kr/ticket/?MOVIE_CD=${CGVCode}&MOVIE_CD_GROUP=${MovieGroupCode}">예매</a>{{/if}}
-            </span>
-        </div>    
-    </li>
-</script>
-
-<script type="text/javascript">
-
-</script>
-            <!--/ Contents End -->
-		 </div>
-		<!-- /Contents Area -->
-	</div>
 	
 	    <%@ include file="../footer.jsp" %>
 </body>

@@ -13,4 +13,7 @@ public interface ReservationMapper {
 	
 	//예매내역 확인
 	public List<ReservationDTO> selectReserv(String rvuserid);
+	
+	//예매 취소
+	public int cancelrv(String rvcode);
 }

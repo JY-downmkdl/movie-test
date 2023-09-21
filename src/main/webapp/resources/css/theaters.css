@@ -76,9 +76,78 @@
 /*----------------------------------------------------스케쥴*/
 .theater-date{
 	border: 1px solid #ddd;
+	margin-bottom: 50px;
 }
 .theater-date ul{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.sect-showtimes > ul > li:first-child {
+    border-top: 1px solid #000;
+}
+.sect-showtimes > ul > li {
+    border-bottom: 1px solid #000;
+    padding: 30px 0;
+}
+.sect-showtimes .col-times {
+    position: relative;
+    margin-left: 14px;
+    padding-left: 26px;
+}
+.sect-showtimes .col-times > .info-movie {
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+}
+}
+.sect-showtimes.info-movie a {
+    font-size: 18px;
+}
+.sect-showtimes .info-movie span , .sect-showtimes .info-hall span{
+	padding-left : 15px;
+}
+
+.sect-showtimes .cgvIcon.etc {
+	position: unset;
+}
+
+
+/* 상영 날짜 > 상영 스케쥴 */
+.sect-showtimes .type-hall {
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.sect-showtimes .info-hall {
+    clear: both;
+    margin-bottom: 5px;
+    padding-left: 16px;
+}
+.sect-showtimes .info-hall li:first-child {
+    padding-left: 0;
+    background-image: none;
+}
+.sect-showtimes .info-hall li {
+    float: left;
+    padding: 0 8px;
+    color: #333;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 17px;
+}
+.sect-showtimes .info-timetable > ul > li {
+    float: left;
+    position: relative;
+    width: 70px;
+    height: 36px;
+    margin-right: -1px;
+    padding: 5px 0;
+    border: 1px solid #cbcabe;
+    line-height: 1.4;
+    text-align: center;
+}
+.sect-showtimes .info-timetable span{
+    display: block;
 }

@@ -32,6 +32,14 @@ public class MemberServiceImpl implements MemberService{
 		a_mapper.insert(avo);
 	}
 
+	
+	@Override
+	public int modify(MemberVO mvo) {
+		mvo.setUserpw(pwdencoder.encode(mvo.getUserpw()));
+		return m_mapper.modify(mvo);
+	}
+	
+	
 	@Override
 	public int check(String id) {
 		int cnt = m_mapper.idCheck(id);
@@ -43,6 +51,6 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVO read(String userid) {
 		return m_mapper.read(userid);
 	}
-	
+
 	
 }

@@ -12,4 +12,7 @@ public interface ReservationService {
 	
 	//예매내역 확인
 	public List<ReservationDTO> reserv(String id);
+	
+	//예매 취소
+	public boolean cancelrv(String rvcode);
 }

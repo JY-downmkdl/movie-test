@@ -14,7 +14,7 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor
 public class MovieServiceImpl implements MovieService {
-	
+
 	@Setter(onMethod_= {@Autowired})
 	private MovieMapper moviemapper;
 	@Override
@@ -27,6 +27,7 @@ public class MovieServiceImpl implements MovieService {
 		MovieDTO gvo = moviemapper.read(movcode);
 		return gvo;
 	}
+
 
 	@Override
 	public boolean modify(MovieDTO mto) {
@@ -44,10 +45,21 @@ public class MovieServiceImpl implements MovieService {
 		List<MovieDTO> movieList = moviemapper.getList();
 		return movieList;
 	}
+	@Override
+	public List<MovieDTO> getadList() {
+		List<MovieDTO> movieList = moviemapper.getadList();
+		return movieList ;
+	}
 
 	@Override
 	public List<MovieDTO> serchList(String movname) {
 		return moviemapper.movsearch(movname);
 	}
+
+	@Override
+	public boolean swthstate(String movcode, int thstates) {
+		return moviemapper.updatestate(movcode, thstates) == 1;
+	}
+	
 	
 }

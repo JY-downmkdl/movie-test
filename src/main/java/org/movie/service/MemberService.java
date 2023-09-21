@@ -8,4 +8,7 @@ public interface MemberService {
 	
 	//회원정보
 	public MemberVO read(String userid);
+	
+	//회원정보 수정
+	public int modify(MemberVO mvo);
 }
