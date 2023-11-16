@@ -59,8 +59,8 @@ public class UploadController {
 	
 	@PostMapping(path="/uploadFormAction")
 	public void uploadFormPost(MultipartFile[] uploadFile, Model model) {
-		String uploadFolder = "D:\\01-STUDY\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img";
-		//String uploadFolder = "C:\\Users\\Owner\\Desktop\\Coding\\Spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img";
+		//String uploadFolder = "D:\\01-STUDY\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img";
+		String uploadFolder = "C:\\Users\\Owner\\Desktop\\Coding\\Spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img";
 		for(MultipartFile multipartfile : uploadFile) {
 			log.info("------------------------------");
 			log.info("파일 이름 : " + multipartfile.getOriginalFilename());
@@ -84,8 +84,8 @@ public class UploadController {
 		
 		List<AttachFileDTO> list = new ArrayList<AttachFileDTO>();
 		log.info("upload ajax post.............");
-		String uploadFolder = "D:\\01-STUDY\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img\\";
-		//String uploadFolder = "C:\\Users\\Owner\\Desktop\\Coding\\Spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img\\";
+		//String uploadFolder = "D:\\01-STUDY\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img\\";
+		String uploadFolder = "C:\\Users\\Owner\\Desktop\\Coding\\Spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img\\";
 		
 		String upoloadFolderPath = "poster";  //2023/07/23
 		
@@ -145,8 +145,8 @@ public class UploadController {
 	@ResponseBody
 	public ResponseEntity<byte[]> getFile(String fileName){
 		log.info("filename : " + fileName);
-		File file = new File("D:\\01-STUDY\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img\\"+fileName);
-		//File file = new File("C:\\Users\\Owner\\Desktop\\Coding\\Spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img\\"+fileName);
+		//File file = new File("D:\\01-STUDY\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img\\"+fileName);
+		File file = new File("C:\\Users\\Owner\\Desktop\\Coding\\Spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\movie001\\resources\\img\\"+fileName);
 		ResponseEntity<byte[]> result = null;
 		HttpHeaders header = new HttpHeaders();
 		try {
@@ -203,8 +203,6 @@ public class UploadController {
 		return new ResponseEntity<String>("deleted" , HttpStatus.OK);
 		
 	}
-	
-	
 	
 	
 	
